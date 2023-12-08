@@ -15,7 +15,6 @@ package day01;
 			//sysout + ctrl space = 콘솔에 출력할 때 사용
 			System.out.println("Hello World!"); 
 			
-			
 		}
 	
 	}
