@@ -13,8 +13,10 @@ public class ifMultiple {
 		System.out.print("정수를 입력하세요 : ");
 		int num = scan.nextInt();
 		
-		if(num % 3 == 0) {
-			System.out.println(num + "는 3의 배수입니다.");
+		if(num == 0) {
+			System.out.println(num + "는 0입니다. 다른 숫자를 입력하세요.");
+		}else if(num % 3 == 0){
+			System.out.println(num + "는 3의 배수 입니다.");
 		}else {
 			System.out.println(num + "는 3의 배수가 아닙니다.");
 		}
