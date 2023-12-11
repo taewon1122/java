@@ -9,7 +9,7 @@ public class TestEx2 {
 		double kor2, eng2, math2, sum2;
 		//평균은 실수가 나올 수 있기때문에 double로
 		double avg;
-		
+	
 	}
 
 }
