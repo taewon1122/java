@@ -15,7 +15,6 @@ public class ConditionalOperatorEx1 {
 		//score <= 100 && score >= 90 ? 참일때 : 거짓일때 / ? <- 조건문 시작
 		result = score <= 100 && score >=90 ? "A학점입니다." : "A학점이 아닙니다.";
 		System.out.println(score + "점은 " + result);
-
 	}
 
 }
