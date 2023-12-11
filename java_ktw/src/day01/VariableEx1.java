@@ -18,7 +18,7 @@ public class VariableEx1 {
 		//변수는 초기화를 하고, 사용해야 한다.
 		//초기화 되지 않은 ch1을 사용하려고 하면 에러가 발생
 		//System.out.println(ch1);
-		ch1 = '+';
+		ch1 = '+'; 
 		System.out.println(ch1);
 		System.out.println(ch2);
 		//""는 문자열을 의미, ""안에 한 글자가 들어간다 해서 문자가 되는 것이 아니라 한 글자인 문자열이다.
