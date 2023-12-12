@@ -23,7 +23,7 @@ public class ForUpDownEx1 {
 		System.out.println("랜덤 : " + r);
 		
 		Scanner scan = new Scanner(System.in);
-		int num = min - 1;
+		int num = min - 1; //이거도 여쭤보기,,
 		//반복문 : 조건식만 입력
 		for( ; num != r ; ) {
 			//정수 입력
