@@ -14,9 +14,15 @@ public class ifMultiple {
 		int num = scan.nextInt();
 		
 		if(num == 0) {
+
 			System.out.println(num + "는 0입니다.");
 		} else if(num % 3 == 0) {
 			System.out.println(num + "는 3의 배수입니다.");
+
+			System.out.println(num + "는 0입니다. 다른 숫자를 입력하세요.");
+		}else if(num % 3 == 0){
+			System.out.println(num + "는 3의 배수 입니다.");
+
 		}else {
 			System.out.println(num + "는 3의 배수가 아닙니다.");
 		}
