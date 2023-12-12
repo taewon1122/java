@@ -18,7 +18,7 @@ public class ForPrimeNumberEx1 {
 		 */
 		/*
 		int num = 5;
-		*i랑 count 선언만*
+		*선생님 풀이에서 i랑 count 선언만. 왜냐하면 for문 초기화에서 복잡해져서*
 		int count = 0;
 		for(int i = 1; i <= num ; i++ ) {
 			if(num % 1 == 0) {
