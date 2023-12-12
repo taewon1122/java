@@ -13,7 +13,7 @@ public class HomeworkEx1 {
 		 * 60미만 : F
 		 * 0보다 작거나 100보다 큰 경우 : 잘못된 점수
 		 */
-	
+		
 		Scanner scan = new Scanner(System.in);
 		System.out.print("성적을 입력하세요 : ");
 		int score = scan.nextInt();
