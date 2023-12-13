@@ -27,7 +27,7 @@ public class WhileSumEx1 {
 		//누적된 합을 구할 변수
 		int sum = 0;
 		int i = 1;
-		int num = 100;
+		int num = 5;
 		while(i <= num) {
 			sum = sum + i;
 			++i;
