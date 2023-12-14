@@ -29,7 +29,7 @@ public class ReverseNumberEx1 {
 		System.out.print("입력 : ");
 		int num = scan.nextInt();
 		
-		//tmp에 num를 복사
+		//tmp에 num를 복사 10으로 나눈 나머지를 배열에 저장하기 위해서 
 		int tmp = num;
 		
 		//10개짜리 배열 arr를 선언
