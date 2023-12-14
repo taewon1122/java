@@ -42,6 +42,9 @@ public class ArrayEx1 {
 			System.out.println("학생" + (i+1) + " 성적 : " + korScores[i]);
 		}
 		scan.close();
+	
+		System.out.println();
 	}
+
 
 }
