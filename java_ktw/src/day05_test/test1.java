@@ -25,7 +25,7 @@ public class test1 {
 		
 		System.out.println();// 이건 왜?..
 	}
-	
+	/*
 	//자료형 []배열
 	int 자료형 []배열 = new int[];
 	//자료형 배열[]
@@ -44,4 +44,5 @@ public class test1 {
 	//arr2 = arr3
 	//배열 선언과 동시에 초기화 하는 경우만 가능
 	int arr3[] = {1,2,3,4,5};
+	*/
 }
