@@ -14,7 +14,7 @@ public class LottoEx2Teacher {
 		int [] tmp = new int[7];
 		//중복되지않게 배열에 저장된 갯수
 		int count = 0;
-		int min = 1, max = 45;
+		int min = 1, max = 9;
 		
 		while(count < tmp.length) {
 			int r = (int)(Math.random()*(max - min + 1) + min);
@@ -45,6 +45,7 @@ public class LottoEx2Teacher {
 			System.out.print(lotto[i] + " ");
 		}
 		System.out.println(" [" + bonus + "]");
+		
 		//사용자 번호를 입력(6개)해서 배열에 저장 - 3번 배열
 		int[] user = new int[6];
 		Scanner scan = new Scanner(System.in);
@@ -67,6 +68,7 @@ public class LottoEx2Teacher {
 		//당첨 개수에 따른 등수를 출력
 		switch(sameCount) {
 		case 6:
+			
 			System.out.println("1등!");
 			break;
 		case 5:
