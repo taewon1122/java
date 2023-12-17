@@ -13,7 +13,7 @@ public class LottoEx2 {
 
 		int random[] = new int[7];
 		int copy[] = new int[6];
-		int bonus[];
+		int bonus[] = new int[1];
 		int user[] = new int[6];
 		int count = 0;
 		int num = 0;
