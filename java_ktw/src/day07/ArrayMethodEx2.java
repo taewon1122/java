@@ -12,7 +12,7 @@ public class ArrayMethodEx2 {
 		printArray(arr2);
 		
 		int [] arr3 = initArray3(5);
-		printArray(arr3);
+		printArray(arr2);
 	}
 	
 	public static void printArray(int []arr) {
@@ -52,7 +52,7 @@ public class ArrayMethodEx2 {
 	 * 리턴타입 : 없음 = void
 	 * 메서드명 : initArray3
 	 */
-	public static void initArray3(int length) {
+	public static int [] initArray3(int length) {
 		int arr[] = new int[length];
 		for(int i = 0; i<length; i++) {
 			arr[i] = i + 1;
