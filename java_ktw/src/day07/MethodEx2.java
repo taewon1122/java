@@ -27,6 +27,7 @@ public class MethodEx2 {
 		System.out.print("arr1 = ");
 		printArray(arr1);
 		System.out.print(", arr2 = ");
+		printArray(arr2);
 	}	
 	/* 기능 : 정수 배열을 콘솔에 한 줄로 출력하는 메서드
 	 * 매개변수	: 출력하려는 정수배열 => int []arr
