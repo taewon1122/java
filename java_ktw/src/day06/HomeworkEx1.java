@@ -82,6 +82,7 @@ public class HomeworkEx1 {
 					O++;
 				}
 			}
+			//결과 출력
 			if(0 < S) {
 				System.out.print(S + "S ");
 			}else if(0 < B)
