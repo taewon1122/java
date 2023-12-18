@@ -3,12 +3,15 @@ package day07;
 import java.util.Scanner;
 
 public class ArrayMethodEx1 {
-
+	
+	
 	public static void main(String[] args) {
+		
 		//출력
 		int arr[] = new int[6];
 		int min = 1, max = 45;
 		if(createRandomArray(min, max, arr)) {
+			System.out.println("min:"+min);
 			System.out.println("배열 생성 성공");
 			for(int tmp : arr) {
 				System.out.println(tmp + " ");
@@ -35,7 +38,9 @@ public class ArrayMethodEx1 {
 		System.out.println();
 		scan.close();
 	}
-	/* min ~ max사이의 중복되지 않은 랜덤한 수 를 배열에 만들어 주고 생성 여부를 알려주는 메서드 메서드
+	
+	
+	/* min ~ max사이의 중복되지 않은 랜덤한 수 를 배열에 만들어 주고 생성 여부를 알려주는 메서드
 	 * 매개변수 :	최소값, 최대값, 배열 => int min, int max, int[]arr
 	 * 리턴타입 : 배열의 생성 여부 => boolean
 	 * 메서드명 : createRandomArray
@@ -51,6 +56,19 @@ public class ArrayMethodEx1 {
 			min = max;
 			max = tmp;
 		}
+		/*
+		min = 2;
+		max = 7;
+		//배열사이즈 6개
+		//max와 min의 최소 차이 = 5
+		
+		
+		max - min = 4 불가능 
+		max - min = 5 가능
+		max - min = 6 가능
+		
+		6 > 6-2+1
+		*/
 		//배열의 크기가 min~max사이의 정수 개수보다 클때
 		if(arr.length > max - min + 1){
 			return false;
@@ -68,6 +86,7 @@ public class ArrayMethodEx1 {
 				//저장된 숫자의 개수를 1 증가
 				count++;
 		}
+		min = 2;
 		return true;
 	}
 
