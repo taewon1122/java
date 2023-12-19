@@ -42,6 +42,7 @@ public class Student {
 	 * 리턴타입 : 없음 => void
 	 * 메서드명 : setKor
 	 */
+	//setKor -> setter
 	public void setKor(int korScore) {
 		kor = korScore;
 	}
