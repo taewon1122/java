@@ -238,26 +238,28 @@ public class StudentProgram {
 		for(Student std : stds) {
 			//입력한 학생 번호와 일치하는 학생 정보를 찾아서 해당하는 과목에 맞는 성적을 수정
 			if(std.num == num) {
-				switch(menu) {
-				case 1:
-					System.out.print("국어 점수 입력 : ");
-					std.kor = (int)scan.nextInt();
-					System.out.println(num + "번 학생 국어점수 : " + std.kor);
-					break;
-				case 2:
-					System.out.print("영어 점수 입력 : ");
-					std.eng = (int)scan.nextInt();
-					System.out.println(num + "번 학생 영어점수 : " + std.eng);
-					break;
-				case 3:
-					System.out.print("수학 점수 입력 : ");
-					std.math = (int)scan.nextInt();
-					System.out.println(num + "번 학생 수학점수 : " + std.math);
-					break;
-				default :
-					System.out.println("잘못 선택된 메뉴");
-				}
+				continue;
 			}
+			switch(menu) {
+			case 1:
+				System.out.print("국어 점수 입력 : ");
+				std.kor = (int)scan.nextInt();
+				System.out.println(num + "번 학생 국어점수 : " + std.kor);
+				break;
+			case 2:
+				System.out.print("영어 점수 입력 : ");
+				std.eng = (int)scan.nextInt();
+				System.out.println(num + "번 학생 영어점수 : " + std.eng);
+				break;
+			case 3:
+				System.out.print("수학 점수 입력 : ");
+				std.math = (int)scan.nextInt();
+				System.out.println(num + "번 학생 수학점수 : " + std.math);
+				break;
+			default :
+				System.out.println("잘못 선택된 메뉴");
+				}
+			
 		}
 	}
 	
