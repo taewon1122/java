@@ -142,7 +142,13 @@ public class StudentProgram {
 		//서브메뉴가 1이면 과목별 조회
 		case 1:
 			//학생 배열을 주고 학생 번호를 입력받아 번호에 맞는 학생 성적을 출력하라고 시킴 : 메서드
-			printScoreBySubject(stds);
+			boolean res = printScoreBySubject(stds);
+			
+			if(res) {
+				System.out.println("성공!");
+			} else {
+				System.out.println("실패!");
+			}
 			break;
 		//서브메뉴가 2이면 학생별 조회
 		case 2:
@@ -191,11 +197,14 @@ public class StudentProgram {
 	 * 리턴타입 : 없음 => void
 	 * 메서드명 : printScoreBySubject
 	 */
-	public static void printScoreBySubject(Student[] stds) {
+	public static boolean printScoreBySubject(Student[] stds) {
 		//과목을 입력
 		System.out.println("과목(국어 : 1, 영어 : 2, 수학 : 3) : ");
 		Scanner scan = new Scanner(System.in);
 		int subject = scan.nextInt();
+		
+		boolean result = true;
+		
 		//반복문 : 학생 전체
 		for(Student std : stds) {
 			switch(subject) {
@@ -210,8 +219,12 @@ public class StudentProgram {
 				break;
 			default :
 				System.out.print("잘못된 과목입니다.");
+				result = false;
+				
 			}
 		}
+		
+		return result;
 			//입력한 과목에 맞는 성적을 출력
 	}
 	
