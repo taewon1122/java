@@ -3,6 +3,7 @@ package day08.access1;
 
 //public 파일이름과 class이름이 같을때 가능
 public class Student {
+	
 	private int grade;
 	int classNum;//접근제어자가 default
 	public int num;
