@@ -7,7 +7,7 @@ public class CarMain {
 		 * scan : 인스턴스명
 		 * Scanner(System.in) : 표준 입력을 이용하여 초기화 하는 생성자
 		 * Scanner("123\nabc") : 문자열을 이용하여 초기화 하는 생성자
-		 * 같은 클래스 안에서는 인스턴스 필요ㅇㅄ음
+		 * 같은 클래스 안에서는 인스턴스 필요없음
 		 */
 		//Scanner scan = new Scanner(System.in);
 		//Scanner scan2 = new Scanner("123\nabc");
