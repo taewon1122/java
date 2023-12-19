@@ -1,8 +1,8 @@
+/*	public static void main(String[] args) {
 package day06_test;
 
 public class homework2 {
 
-	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		package day06;
 
@@ -48,7 +48,7 @@ public class homework2 {
 		       * -- 기록 --
 		       * 1. LSJ : 5회
 		       */
-		      Scanner scan = new Scanner(System.in);
+		     /* Scanner scan = new Scanner(System.in);
 		      
 		      int menu;
 		      int []r_Num = new int[3];
@@ -87,7 +87,7 @@ public class homework2 {
 		            */
 		               
 		               
-		               
+		           /*    
 		            while(true){
 		               //사용자 입력 받기
 		               int []user = new int[3];
@@ -155,4 +155,4 @@ public class homework2 {
 		}
 	}
 
-}
+}*/
