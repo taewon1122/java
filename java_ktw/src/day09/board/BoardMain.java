@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class BoardMain {
 	//메소드에 멤버변수가 추가작업 없이 사용되려면 static이 붙어야함
+	//static 메모리 고정 함수내에서 다 쓸수있는 변수
 	private static Scanner scan = new Scanner(System.in);
 	private static Board [] boardList = new Board[5];//게시글 목록
 	private static int boardNum = 1;//추가될 게시글 번호가 유지될 수 있도록
@@ -178,7 +179,7 @@ public class BoardMain {
 		System.out.println("삭제할 게시글 번호 선택 : ");
 		int num = scan.nextInt();
 		//반복문 : 게시글 목록 전체
-		int index = -1;//일치하는 게시글이 있는 번지
+		int index = -1;//일치하는 게시글이 있는 번지 index 0까지 있으니까 아예 글 없을시 -1
 		for(int i = 0; i < count; i++) {
 			//입력한 번호와 일치하는 게시글을 찾아 번지를 저장
 			if(num == boardList[i].getNum()) {
@@ -200,8 +201,11 @@ public class BoardMain {
 		//기존 배열과 크기가 같은 새 배열을 생성
 		Board []tmpList = new Board[boardList.length];
 		//새 배열에 기존 배열을 복사
+		//b l 0번지부터 b l 개만큼을 tmplist 0번지에 붙여넣겠다.
 		System.arraycopy(boardList, 0, tmpList, 0, boardList.length);
 		//기존 배열에서 찾은 번지 다음부터 나머지 개수를 복사해서 새 배열에 찾은 번지부터 덮어씀
+		//count - index => 나머지 
+		//tmpList index + 1번지를 찾고 boardList index번지를 찾고 tmpList index + 1번지 부터 count - index만큼의 크기를 boardList index번지부터 붙여넣는다
 		System.arraycopy(tmpList, index+1, boardList, index, count - index);
 		//메서드
 		System.out.println("삭제 되었습니다.");
@@ -265,13 +269,13 @@ public class BoardMain {
 	private static void insertBoard() {
 		scan.nextLine();//입력 버퍼에 남아있는 엔터 처리
 		// 제목, 내용, 일자, 아이디 순으로 입력받음
-		System.out.println("제목 : ");
+		System.out.print("제목 : ");
 		String title = scan.nextLine();
-		System.out.println("내용 : ");
+		System.out.print("내용 : ");
 		String contents = scan.nextLine();
-		System.out.println("일자 : ");
-		String date = scan.next();
-		System.out.println("작성자 : ");
+		System.out.print("일자 : ");
+		String date = scan.next(); // 띄어쓰기 없어서
+		System.out.print("작성자 : ");
 		String writer = scan.next();
 		// 입력받은 정보들을 이용하여 게시글 인스턴스를 생성
 		Board board = new Board(boardNum, title, contents, writer, date);
