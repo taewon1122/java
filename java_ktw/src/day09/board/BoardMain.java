@@ -282,10 +282,9 @@ public class BoardMain {
 		
 		//배열 크기를 안늘려도 되면 종료
 		
-		if(count < boardList.length);{
+		if(count < boardList.length){
 			return;
 		}
-	
 		//배열이 꽉 차면 배열을 늘려줌
 		//기존 배열보다 큰 배열 생성
 		Board[] tmpList = new Board[boardList.length + 5];
