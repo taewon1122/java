@@ -161,6 +161,7 @@ public class WordMainT {
 		//엔터처리
 		scan.nextLine(); 
 		String meaning = scan.nextLine();
+		
 		//단어와 뜻을 이용하여 word의 인스턴스를 생성
 		WordT tmp = new WordT(word, meaning);
 		//위에서 생성한 인스턴스를 단어장에 저장 저장
@@ -168,12 +169,12 @@ public class WordMainT {
 		//저장된 단어의 갯수를 1증가
 		count++;
 		
-		/*
+		
 		//테스트용으로 단어장 목록 출력
 		for(int i = 0; i<count; i++) {
 			list[i].printWord();
 		}
-		*/
+		
 		
 		//단어장이 꽉 차면 단어장 크기를 늘림
 		if(count == list.length) {
