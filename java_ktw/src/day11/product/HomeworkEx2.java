@@ -11,21 +11,17 @@ public class HomeworkEx2 {
 	static Scanner scan = new Scanner(System.in);
 	static int a;
 	static int b;
-	static String generator;
+	static String operator;
 	public static void main(String[] args) {
 		number();
 		generator();
 	}
 
-	private static void printAnswer() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	private static void generator() {
 		System.out.print("연산자 입력(+,-,*,/,%) : ");
-		generator = scan.next();
-		switch(generator) {
+		operator = scan.next();
+		switch(operator) {
 		case "+":
 			System.out.println(a + " + " + b + " = " + (a+b));
 			break;
