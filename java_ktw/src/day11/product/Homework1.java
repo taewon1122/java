@@ -3,7 +3,7 @@ package day11.product;
 public class Homework1 {
 	String name;
 	int studentnum;
-	int classnum;
+	int classnum; 
 	
 	String subject;
 	int score;
