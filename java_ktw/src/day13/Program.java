@@ -10,7 +10,6 @@ public interface Program {
 	public abstract void printExit(); //프로그램 종료
 	void run(); //프로그램 실행
 	default void test() {}
-
 }
 
 
