@@ -1,5 +1,6 @@
 package day11.product;
 
+
 import java.util.Scanner;
 
 import day09.board.Board;
