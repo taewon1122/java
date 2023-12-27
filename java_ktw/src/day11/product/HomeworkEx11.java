@@ -5,6 +5,7 @@ public class HomeworkEx11 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	Student[] stds = new Student[5];
+	
 	stds[0] = new Student(1, 1, 1, "홍길동");
 	stds[1] = new Student(1, 1, 2, "임꺽정");
 
