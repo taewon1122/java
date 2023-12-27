@@ -12,7 +12,7 @@ public class StringEx1 {
 		String str3 = new String("abc");
 		//참조 변수에서 ==는 주소를 비교
 		System.out.println(str1 == str2);
-		System.out.println(str1 == str3);
+		System.out.println(str1 == str3); 
 		System.out.println(str2 == str3);
 		
 		//문자열은 equals라는 메서드를 통해 비교
