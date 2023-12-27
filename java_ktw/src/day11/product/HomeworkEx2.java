@@ -24,6 +24,7 @@ public class HomeworkEx2 {
 		switch(operator) {
 		case "+":
 			System.out.println(a + " + " + b + " = " + (a+b));
+			
 			break;
 		case "-":
 			System.out.println(a + " - " + b + " = " + (a-b));
