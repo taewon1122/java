@@ -1,5 +1,6 @@
 package day10;
 
+
 public class thisEx1 {
 
 	public static void main(String[] args) {
