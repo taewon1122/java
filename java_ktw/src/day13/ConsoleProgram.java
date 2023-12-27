@@ -3,11 +3,8 @@ package day13;
 import java.util.Scanner;
 
 //Program 인터페이스를 구현한 구현 클래스
-public abstract class ConsoleProgram implements Program{
+public class ConsoleProgram implements Program{
 	
-	static String str;
-	
-	static int count = 0;
 	private Scanner scan = new Scanner(System.in);
 	
 	@Override
