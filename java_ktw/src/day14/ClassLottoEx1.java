@@ -62,6 +62,7 @@ public class ClassLottoEx1 {
 			}
 		}
 		
+		//컴퓨터 사용자 숫자 맞춰보며 등수 출력
 		switch(count) {
 		case 5:
 			System.out.println("1등 입니다.");
@@ -80,7 +81,6 @@ public class ClassLottoEx1 {
 			
 		}
 		
-		//컴퓨터 사용자 숫자 맞춰보며 등수 출력
 		
 		
 		
