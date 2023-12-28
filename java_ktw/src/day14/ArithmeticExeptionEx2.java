@@ -24,12 +24,12 @@ public class ArithmeticExeptionEx2 {
 		}
 		
 	}
-	public static double calculate(int a, char op, int b) {
+	public static double calculate(int a, char op, int b) throws RuntimeException{
 		switch(op) {
 		case '+': return a + b;
 		case '-': return a - b;
 		case '*': return a * b;
-		case '%':
+		case '%': 
 			if(b == 0) {
 				throw new ArithmeticException("0으로 나눌 수 없습니다.");
 			}
