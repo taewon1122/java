@@ -3,7 +3,7 @@ package day14;
 public class ExceptionEx2 {
 
 	public static void main(String[] args) {
-		System.out.println(1/0);
+	
 		test();
 		
 	}
@@ -19,7 +19,7 @@ public class ExceptionEx2 {
 			//위에서 예외가 발생해서 처리하고, return을 통해 빠져 나가도 실행
 			System.out.println("finally 실행");
 		}
-		//위웨서 return으로 빠져나가면 실행되지 않음.
+		//위에서 return으로 빠져나가면 실행되지 않음.
 		System.out.println("메서드 종료");	
 	}
 }
