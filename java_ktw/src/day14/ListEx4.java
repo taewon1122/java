@@ -13,6 +13,8 @@ public class ListEx4 {
 			list.add(5);
 			
 			System.out.println(list);
+			
+			
 			/* indexOF : A와 일치하는 요소가 몇번지에 있는지 알려주는 메서드. 없으면 -1 / SET에서는 순서보장하지 않기때문에 번지 알 수 없음.
 			 * */
 			System.out.println(list.indexOf(10));
