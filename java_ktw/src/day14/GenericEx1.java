@@ -16,7 +16,7 @@ public class GenericEx1 {
 		}
 		
 		System.out.println();
-		
+		//Array1에 T extends Number를 적용하면 Character 클래스는 Number 클래스의 자식 클래스가 아니기때문에 에러가 발생
 		Array1<Character> array2 = new Array1<Character>(10);
 		for(int i = 0; i<10; i++) {
 			array2.add(i, (char)('a'+i));
@@ -31,7 +31,7 @@ public class GenericEx1 {
 //<T> T는 고정된 문자는 아님.
 
 //배열 클래스 -> 하나의 클래스로 여러가지 타입으로 사용가능
-class Array1<T>{
+class Array1<T /*extends Number*/>{
 	private T []array;
 	
 	public Array1() {
@@ -59,3 +59,8 @@ class Array1<T>{
 	}
 }
 
+//여러개 선언가능 ,를 통해서 대문자로
+class TestB<T, C>{
+	private T num1;
+	private C num2;
+}
