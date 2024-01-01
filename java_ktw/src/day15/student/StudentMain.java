@@ -1,5 +1,10 @@
 package day15.student;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
+
 public class StudentMain {
 
 	public static void main(String[] args) {
@@ -30,8 +35,56 @@ public class StudentMain {
 		 *		 -영어
 		 *		 -수학
 		 */
-		Program p = new StudentProgram();
-		p.run();
+		
+		//Program p = new StudentProgram();
+		//p.run();
+		
+		int a[] = new int[3];
+		
+		
+		
+		List<Student> list = new ArrayList<Student>();
+		
+		System.out.println("size:"+list.size());
+		
+		Student s1 = new Student(1, 1, 1, "배영걸");
+		list.add(s1);
+		
+		System.out.println("size:"+list.size());
+		
+		Student s2 = new Student(1, 1, 1, "김수현");
+		list.add(s2);
+		System.out.println("size:"+list.size());
+		
+		s2.setName("김수현1");
+		
+		
+		Student s3 = new Student(1, 1, 1, "김태원");
+		list.add(s3);
+		System.out.println("size:"+list.size());
+		
+		//list.remove(1);
+		
+		/*
+		for(int i=0; i<list.size(); i++) {
+			Student s = list.get(i);
+			System.out.println("이름:"+s.getName());
+			//System.out.println("이름:"+list.get(i).getName());
+		}
+		*/
+		String srchWord = "김";
+		
+		for(Student s : list) {
+			if(s.getName().contains(srchWord0)) {
+			//if(s.getName().equals(srchWord)) {
+				System.out.println("이름:"+s.getName());
+			}
+			
+		}
+		
+		
+		
+		
 		
 	}
 
