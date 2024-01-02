@@ -1,9 +1,6 @@
 package homework;
 
-import day15.student.Program;
-import day15.student.StudentProgram;
-
-public class teamHomework1 {
+public class WordMain {
 
 	public static void main(String[] args) {
 		/* 영어 단어장을 관리하는 프로그램을 작성하세요.
@@ -25,7 +22,7 @@ public class teamHomework1 {
 		 * 
 		 */
 		
-		Program2 p = new EnglishProgram();
+		Program p = new WordProgram();
 		p.run();
 	}
 
