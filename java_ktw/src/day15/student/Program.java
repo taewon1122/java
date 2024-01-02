@@ -1,6 +1,6 @@
 package day15.student;
 
-public interface Program {
+interface Program {
 	
 		void run();
 		void printMenu();
