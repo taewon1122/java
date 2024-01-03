@@ -28,6 +28,8 @@ public class StudentManager {
 	}
 	
 	/**가지고 있는 학생 정보들을 정렬하는 메서드
+	 * comparator -> s1, s2 파라미터에 들어오는 값 비교해서 정렬
+	 * comparable -> 자기 자신과 파라미터값 비교
 	 */
 	public void sort() {
 		list.sort((s1, s2) -> {
