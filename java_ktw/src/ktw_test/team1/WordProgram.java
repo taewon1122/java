@@ -121,11 +121,8 @@ public class WordProgram implements Program{
 			//중복된 단어면 저장하지 않고 빠져나간다.
 			return;
 		}
-		//없다면 저장
-		wordList.add(tmpWord);
+		//없다면 저
 		//확인 출력
-		System.out.println(wordList);
-		
 		//의미 입력 받는다
 		System.out.print("의미 입력 : ");
 		String mean = scan.next();
@@ -133,15 +130,24 @@ public class WordProgram implements Program{
 		System.out.print("품사 입력 : ");
 		String wordClass = scan.next();
 		//meanList에 입력값 넣기위한 인스턴스 생성. 하기 위해 means 클래스에 생성자를 생성 한게 @data
-		Means tmpMeans = new Means(mean, wordClass);
-		if(meanList.contains(mean)) {
-			System.out.println("이미 입력된 의미");
-			return;
-		}
-		//없다면 저장
-		meanList.add(tmpMeans);
-		//단어 배열에다가 뜻 배열 집어넣고싶어
-	
+		
+		Means means = new Means(mean,wordClass);
+		meanList.add(means);
+		tmpWord.setMean(meanList);
+		wordList.add(tmpWord);
+		System.out.println(wordList);
+		
+//		
+//		if(meanList.contains(mean)) {
+//			System.out.println("이미 입력된 의미");
+//			return;
+//		}
+//		//없다면 저장
+//		meanList.add(tmpMeans);
+//		//단어 배열에다가 뜻 배열 집어넣고싶어
+//		Word tmpword = new Word(word);
+//		wordList.add(word)
+//		tmpword.printAll();
 	}
 
 	//단어 수정
