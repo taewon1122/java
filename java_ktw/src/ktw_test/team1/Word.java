@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 //단어 관리하는 클래스
 public class Word {
 	
@@ -34,7 +36,7 @@ public class Word {
 	}
 	
 	public String toString(){
-		return "[" + "단어 : " + word + "]";
+		return "[" + "단어 : " + word + "]"+mean.toString();
 	}
 	
 	public Word(String word) {
