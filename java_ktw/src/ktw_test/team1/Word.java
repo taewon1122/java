@@ -1,5 +1,6 @@
 package ktw_test.team1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -36,19 +37,18 @@ public class Word {
 	}
 	
 	public String toString(){
-		return "[" + "단어 : " + word + "]"+mean.toString();
+		return "[" + "단어 : " + word + "]";
+	}
+	
+	public void printWord(){
+		for(int i = 0; i < mean.size(); i++) {
+			System.out.print((i+1) + ". ");
+			System.out.println(word + "/" +  mean.get(i));
+		}
 	}
 	
 	public Word(String word) {
 		this.word = word;
 	}
 	
-	//단어와 뜻을 함께 출력할 수 있는 기능의 메서드
-	public void printAll() {
-		System.out.print("단어: " + word);
-		for(int i = 0; i<mean.size(); i++) {
-			System.out.print((i+1) + ". ");
-			mean.get(i).printMean();
-		}
-	}
 }
