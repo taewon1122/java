@@ -1,5 +1,7 @@
 package ktw_test.team1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +14,7 @@ import lombok.NonNull;
 public class Means {
 	@NonNull
 	String mean, wordClass;
-
+	
 	//이미 있는 뜻인지 확인하는 메서드
 	@Override
 	public boolean equals(Object obj) {
@@ -32,8 +34,8 @@ public class Means {
 	}
 	
 	//출력방식
-	public String printMean() {
-		return "[ "+ "품사 : " + wordClass + "뜻 : " + mean + " ]";
+	public String toString() {
+		return "[품사] : " + wordClass + " [뜻] : " + mean;
 	}
 
 	public Means(String wordClass, String mean) {
