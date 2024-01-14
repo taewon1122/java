@@ -30,7 +30,7 @@ public class Vocabulary {
 		
 		//새로 추가된 단어이면 단어를 추가
 		if(index < 0) {
-			list.add(new Word(word, newmeanList));
+			list.add(new Word(word, newMeanList));
 			return true;
 		}
 		
