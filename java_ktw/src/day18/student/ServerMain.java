@@ -44,12 +44,12 @@ public class ServerMain {
 		}
 	}
 	
-	private static void load() {
+	private static void load() throws ClassNotFoundException {
 		try {
 			//파일에서 읽어온다
 			ObjectInputStream fois = new ObjectInputStream(new FileInputStream(fileName));
 			list = new ArrayList<Student>();
-		} catch (IOException | ClassNotFoundException e) {
+		} catch (IOException e) {
 			list = new ArrayList<Student>();
 			e.printStackTrace();
 		}
