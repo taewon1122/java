@@ -18,6 +18,7 @@ public class ListEx3 {
 			//종료하기위해 -1을 입력했으면 반복문 종료
 			if(str.equals("-1")) {
 				break;
+				
 			}
 			list.add(str);
 		}
