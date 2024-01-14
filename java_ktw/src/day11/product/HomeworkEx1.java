@@ -96,6 +96,16 @@ public class HomeworkEx1 {
 		}
 	}
 
+	private static void deleteScore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void updateScore() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private static void AddScore() {
 		//학생 정보 입력
 		System.out.print("학생이름 : ");
@@ -122,7 +132,7 @@ public class HomeworkEx1 {
 				
 				//만약 국영수 입력해서 따로 해야하는거면 국영수 배열 따로 만들어야하나?
 				//과목별 점수를 학생별로 넣기 가능?ㅋㅋㅋ
-				scoreList[scoreCount] = new Homework1(subject, score);
+				//scoreList[scoreCount] = new Homework1(subject, score);
 				scoreCount++;
 				return;
 			}
