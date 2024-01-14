@@ -11,6 +11,7 @@ public class ListEx1 {
 		for(int i = 0; i<100; i++) {
 			list.add(i+1);
 		}
+		
 		for(int i = 0; i<list.size(); i++) {
 			//get(index) : index 번지에 있는 인스턴스를 가져옴
 			System.out.print(list.get(i));
