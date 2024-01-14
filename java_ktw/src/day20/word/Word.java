@@ -116,6 +116,13 @@ public class Word implements Serializable{
 	public Word(String word, String partOfSpeech, String mean) {
 		this.word = word;
 		meanList = new ArrayList<Mean>();
+		meanList.add(new Mean(partOfSpeech, mean));
+	}
+	
+	public Word(String word, List<Mean> newMeanList) {
+		this.word = word;
+		this.meanList =
+				newMeanList != null ? newMeanList : new ArrayList<Mean>();
 	}
 
 	public String getRandomMean() {
