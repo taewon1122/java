@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다단 속성 예제</title>
+    <style>
+        .container{
+            /* column-count: 2; */
+            column-width: 500px;
+            /* 단 사이의 여백 크기를 지정 */
+            column-gap: 100px;
+            column-rule-style: solid;
+            column-rule-color: red;
+            column-rule-width: 3px;
+        }
+        .column-span{
+            column-span: all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+             abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+        </div>
+    </div>
+    <div class="container">
+        <div class="item column-span">
+             def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def def
+        </div>
+    </div>
+    <div class="container">
+        <div class="item">
+            zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc zxc
+        </div>
+    </div>
+</body>
+</html>
