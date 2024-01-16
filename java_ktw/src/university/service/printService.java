@@ -1,8 +1,15 @@
 package university.service;
 
-public interface printService {
+public interface PrintService {
 
 	void printMenu();
 	void printManageProfessor();
-
+	void printManageStudent();
+	void printManageMajor();
+	void printManageLecture();
+	void printManageSignUp();
+	void printSearch();
+	void printManageScore();
+	void printSearchStudent();
+	
 }
