@@ -9,9 +9,9 @@ public class Major {
 	//전공번호
 	int majorNum;
 	//정원
-	int majorMaxCount = 20; //5
+	int majorMaxCount; //5
 	//현재 인원
-	int majorCount = 0; //(1/5)
+	int majorCount; //(1/5)
 	
 	@Override
 	public int hashCode() {
@@ -34,8 +34,17 @@ public class Major {
 	//하고나서 student로 넘겨준다.
 	public boolean Major(int majorNum) {
 		if(this.majorNum == majorNum) {
+			//sort();
 		}
 		return false;
+	}
+	
+	//majorNum 생성해주는 메서드
+	
+	@Override
+	public String toString(){
+		Major m = new Major();
+		return "[전공번호 : " + majorNum + "]" + "[전공 : " + major + "]" + "[정원 : " + majorCount + " / " + majorMaxCount + "]";
 	}
 	
 	

@@ -8,9 +8,6 @@ import lombok.Data;
 @Data
 public class Lecture {
 	
-	//강의정보 입력받는 리스트
-	List<Lecture> lectureList = new ArrayList<Lecture>();
-	
 	//과목명
 	String lectureName;
 	//과목식별번호
@@ -21,6 +18,13 @@ public class Lecture {
 	int lectureCount;
 	//정원
 	int lectureMaxCount;
+	//점수
+	int lectureScore;
+	//강의 시간
 	
-	
+	@Override
+	public String toString() {
+		return "[lectureNum]" + "[과목명: " + lectureName + " ]" + "[정원: " + "lectureCount" + "/" + lectureMaxCount + " ]";
+	}
+
 }

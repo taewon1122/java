@@ -10,6 +10,8 @@ public interface PrintService {
 	void printManageSignUp();
 	void printSearch();
 	void printManageScore();
-	void printSearchStudent();
-	
+	void printViewStudent();
+	void printStudentMenu();
+	void printProfessorMenu();
+	void printUniversityMenu();
 }

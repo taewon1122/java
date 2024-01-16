@@ -4,21 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.Data;
+
 //교수 클래스에서는 교수와 관련된 정보만 취금
+@Data
 public class Professor {
 	
-	//교수들 정보 저장
-	List<Professor> professorList = new ArrayList<Professor>();
-	//과목 정보 받아올 생성자
-	Lecture lecture = new Lecture();
-	
+	//교수 [name, id, major(), lecture[ lecture(title,count(0->21)>maxcount,score) ] ]
+			
+	//학생 [lecture(교수),count1] 학생2 [lecture(count2) ] 학생20(count20)  학생21 ()
+			
+	//교수 lectureList[lecture(count++)]
+			
+	//String으로 수정
+	int professorId;
 	//성함
 	String professorName;
 	//동명이인 일 때 처리할 번호
-	int professorId;
-	
+	//교수님 전공
+	String professorMajor;
 	//전공 이름을 받아오는 인스턴스
-	Major major = new Major();
+	//과목 정보 저장할 list
+	List<Lecture> lectureList = new ArrayList<Lecture>();
 
 	@Override
 	public int hashCode() {
@@ -38,13 +45,21 @@ public class Professor {
 	}
 	
 	//교수 고유번호랑 교수님 이름 강의정보 입력받아오는 생성자
-	public Professor(int professorId, String professorName, Lecture lecture) {
+	public Professor(int professorId, String professorName, String major, List<Lecture> lectureList) {
 		this.professorId = professorId;
 		this.professorName = professorName;
-		this.lecture = lecture;
+		this.professorMajor = major;
+		this.lectureList = lectureList;
 	}
 	
-	
+	public Professor(List<Lecture> lectureList) {
+		this.lectureList = lectureList;
+	}
+
+	@Override
+	public String toString() {
+		return "[professorId]" + "[성함: " + professorName + " ]" + "[전공 : " + professorMajor + " ]";
+	}
 	/*
 	- 기본 기능
 	 *   - 교수 관리
