@@ -38,6 +38,33 @@
             border: 1px solid black;
             perspective: 50000px; perspective-origin: 50% 50%;
         }
+        .container1{
+            display: inline-block;
+            border: 10px solid #aaa;
+            transform: perspective(500px) rotateY(-60deg);
+        }
+
+        .container1 .box1{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            transform: perspective(500px) rotateY(60deg);
+        }
+
+        .container2{
+            display: inline-block;
+            border: 10px solid #aaa;
+            transform-style: preserve-3d;
+            transform: perspective(500px) rotateY(-60deg);
+        }
+
+        .container2 .box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            transform: perspective(500px) rotateY(60deg);
+        }
+        
         .box{
             background-color: red; width: 400px; height: 50px;
         }
@@ -134,12 +161,12 @@
         </div>
     </div>
 
-    <div class="container style">
+    <div class="container1 style">
         <div class="box box1">
             <span>Text</span>
         </div>
     </div>
-    <div class="container style">
+    <div class="container2 style">
         <div class="box box2">
             <span>Text</span>
         </div>
