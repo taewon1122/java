@@ -111,33 +111,15 @@ public class UniversityProgram implements Program{
 	 *   - 조회
 	 *     /- 성적 조회/학과 조회 등
 	 */
-	//교수 메뉴
-		/* 강의등록
-		 * 성적등록
-		 * 
-		 * */
-		//학생 메뉴
-		/* 수강관리
-		 * 성적조회
-		 * 
-		 * */
-		//학사 메뉴
-		/* 교수관리
-		 * 학생관리
-		 * 전공관리
-		 * 학생조회
-		 * 
-		 * */
 	@Override
 	public void runMenu(int menu) {
 		switch(menu) {
 		case 1:
-			//교수 메뉴
-			//id 입력하는 (로그인)
+			//교수 메뉴(로그인)
 			professorMenu();
 			break;
 		case 2:
-			//학생 메뉴
+			//학생 메뉴(로그인)
 			studentMenu();
 			break;
 		case 3:
@@ -209,7 +191,7 @@ public class UniversityProgram implements Program{
 			break;
 		case 2:
 			//학생 조회
-			viewStudentList();
+			searchStudentList();
 			break;
 		case 3:
 			//돌아가기
@@ -221,51 +203,82 @@ public class UniversityProgram implements Program{
 	}
 	
 	//학생 조회
-	private void viewStudentList() {
+	private void searchStudentList() {
 		int menu;
 		do {
-			printService.printViewStudent();
+			printService.printSearchStudent();
 			menu = scan.nextInt();
-			runViewStudentList(menu);
+			runSearchStudentList(menu);
 		}while(menu != 3);
-		
 	}
 	
 	//조회 메뉴
-	private void runViewStudentList(int menu) {
+	private void runSearchStudentList(int menu) {
 		switch(menu) {
 		case 1:
 			//전체조회
-			viewAllStudent();
+			searchAllStudent();
 			break;
 		case 2:
-			viewByMajor();
+			searchByStudentMajor();
 			//전공별
-			//학년별(1, 2, 3, 4)
-			//성적별 이름별 sort가능하지 않을까요
+				//학년별(1, 2, 3, 4)
+				//성적별 이름별 sort가능하지 않을까요
 			break;
 		case 3:
+			System.out.println("돌아가기.");
 			break;
 		default:
 			throw new InputMismatchException();
 		}
 	}
-
-	private void viewByMajor() {
+	
+	//전공별 학생 조회
+	private void searchByStudentMajor() {
 		
 	}
-
-	private void viewAllStudent() {
+	
+	//전체 학생 조회
+	private void searchAllStudent() {
 		
 	}
 
 	//교수 조회
 	private void searchProfessor() {
-		//전체 조회
-		
+		int menu;
+		do {
+			printService.printSearchProfessor();
+			menu = scan.nextInt();
+			runSearchProfessor(menu);
+		}while(menu != 3);
+	}
+
+	private void runSearchProfessor(int menu) {
+		switch(menu) {
+		case 1:
+			//전체조회
+			searchAllProfessor();
+			break;
+		case 2:
+			searchByProfessorMajor();
+			//전공별
+			break;
+		case 3:
+			System.out.println("돌아가기.");
+			break;
+		default:
+			throw new InputMismatchException();
+		}
+	}
+	
+	//전공별 조회
+	private void searchByProfessorMajor() {
 		//전공별 조회
-			//학년별
-			//평균학점
+	}
+
+	//전체 조회
+	private void searchAllProfessor() {
+		
 	}
 
 	//전공 관리

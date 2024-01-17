@@ -3,6 +3,8 @@ package university.service;
 import java.util.ArrayList;
 
 public class UniversityServiceImp {
+	
+	//학생 
 
 	List<Major> majorList = new ArrayList<Major>();
 	

@@ -122,10 +122,20 @@ public class PrintServiceImp implements PrintService {
 	}
 
 	@Override
-	public void printViewStudent() {
+	public void printSearchStudent() {
 		System.out.println("-------학생조회-------");
 		System.out.println("1. 학생 전체 조회");
 		System.out.println("2. 학생 학과별 조회");
+		System.out.println("3. 종료");
+		System.out.println("-------------------");
+		System.out.println("메뉴 선택 : ");
+	}
+
+	@Override
+	public void printSearchProfessor() {
+		System.out.println("-------교수조회-------");
+		System.out.println("1. 교수 전체 조회");
+		System.out.println("2. 교수 학과별 조회");
 		System.out.println("3. 종료");
 		System.out.println("-------------------");
 		System.out.println("메뉴 선택 : ");
