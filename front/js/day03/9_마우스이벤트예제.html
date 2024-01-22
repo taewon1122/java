@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.마우스 이벤트 예제</title>
+    <style>
+        .box{border: 1px solid black; padding: 20px;}
+        .inner-box{
+            background-color: yellow;
+            padding: 20px;
+            border: 1px solid; height: 100px;
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <div class="inner-box"></div>
+    </div>
+    <div class="box box2">
+        <div class="inner-box"></div>
+    </div>
+    <script>
+        /*
+        박스에 마우스가 들어가면 배경색이 파란색이 되게하는 코드
+        */
+        let box1 = document.getElementsByClassName("box1")[0];
+        let count1 = 0;
+        let text1 = document.getElementById("text1");
+        
+        box1.onmouseover = function(){
+            this.style.backgroundColor = "gray";
+            text1.innerText = ++count1;
+        }
+        box1.onmouseout = function(){
+            this.style.backgroundColor = "white";
+        }
+
+        let box2 = document.getElementsByClassName("box1")[0];
+        box2.onmouseenter = function(){
+            this.style.backgroundColor = "blue";
+        }
+        box2.onmouseleave = function(){
+            this.style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>
