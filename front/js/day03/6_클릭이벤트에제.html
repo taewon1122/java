@@ -35,6 +35,33 @@
        */
         let btns = document.querySelectorAll(".btn");
         let boxes = document.querySelectorAll(".box");
+
+        /*
+        btns[0].onclick = function(){
+            boxDisplayNone();
+            boxes[0].style.display = "block";
+        }
+        btns[1].onclick = function(){
+            boxDisplayNone();
+            boxes[1].style.display = "block";
+        }
+        btns[2].onclick = function(){
+            boxDisplayNone();
+            boxes[2].style.display = "block";
+        }
+        */
+
+        //queryselectorAll에서 forEach를 제공하기때문에 for문 대신 아래처럼 코딩함.
+        /*
+        for(let i = 0; i<btns.length; i++){
+            let item = btns[i];
+            item[i].onclick = function(){
+            boxDisplayNone();
+            boxes[i].style.display = "block";
+            }
+        }
+        */
+
         btns.forEach((item, index) => {
             item.onclick = function(){
                 boxDisplayNone();
