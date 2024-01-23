@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>요소 추가 예제</title>
 </head>
 <body>
     <button id="btn">이미지 추가</button>
-    <div class="box"></div>
+    <div id="box"></div>
     <script>
         let btn = document.getElementById("btn");
         btn.onclick = function(){
@@ -20,7 +20,7 @@
             //width=""
             let width = document.createAttribute("width");
             //src="이미지 주소"
-            src.value = "https://cdn.eyesmag.com/content/uploads/posts/2022/03/22/main-d3bbc024-549a-4a23-9c08-5cb675d6b028.jpg"
+            src.value = "https://newsimg.hankookilbo.com/2015/12/17/201512171111528240_2.jpg"
             //alt="강아지"
             alt.value = "강아지";
             //width=100
