@@ -31,7 +31,8 @@
             //요소에 텍스트 노드 추가(연결)
             button.append(text);
             //요소를 기준 요소를 통해 배치
-            btnAdd.after(button);
+            let base = document.getElementById("box");
+            btnAdd.prepend(button);
         }
     </script>
 </body>
