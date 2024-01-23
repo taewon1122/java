@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">이미지 추가</button>
+    <div class="box"></div>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            //<img>
+            let img = document.createElement("img");
+            //src=""
+            let src = document.createAttribute("src");
+            //alt=""
+            let alt = document.createAttribute("alt");
+            //width=""
+            let width = document.createAttribute("width");
+            //src="이미지 주소"
+            src.value = "https://cdn.eyesmag.com/content/uploads/posts/2022/03/22/main-d3bbc024-549a-4a23-9c08-5cb675d6b028.jpg"
+            //alt="강아지"
+            alt.value = "강아지";
+            //width=100
+            width.value = "100";
+            img.setAttributeNode(src);
+            img.setAttributeNode(alt);
+            img.setAttributeNode(width);
+            //<img alt="강아지" src="이미지 주소"
+            let box = document.getElementById("box");
+            box.append(img);
+        };
+    </script>
+</body>
+</html>
