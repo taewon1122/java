@@ -7,11 +7,14 @@
     <script src="../../static/jquery.js"></script>
     <style>
         .error{ color: red; display: block;}
+        .error2{ color: red; display: block;}
     </style>
 </head>
 <body>
     <input type="text" class="input">
-    <labe class="error"></labe>
+    <label class="error"></label>
+    <input type="text2" class="input2">
+    <label class="error2"></label>
     <script>
         /*
         input태그에 값을 입력해서 숫자가 아니면 input태그 아래에 입력한 값은
@@ -25,6 +28,16 @@
                 str = '입력한 값은 숫자가 아닙니다.';
             }
             $(".error").text(str);
+        })
+
+        $(".input2").change(function(){
+            let text2 = $(this).val();
+            let regex = /^\d+$/;
+            let str = "";
+            if(!regex.test(text2)){
+                str = '입력한 값은 숫자가 아닙니다.';
+            }
+            $(".error2").text(str);
         })
     </script>
 </body>
