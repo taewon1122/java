@@ -96,6 +96,7 @@ public class Student {
 			System.arraycopy(tmpList, index + 1, subjects, index, count - index);
 			subjects[index] = null;
 		}
+		return false;
 	}
 	//성적 수정하는 메서드
 	//학생 정보 출력하는 메서드
