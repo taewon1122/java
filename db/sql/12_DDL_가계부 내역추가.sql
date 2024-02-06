@@ -15,3 +15,5 @@ insert into category(ca_ty_name, ca_name) values("지출", "식비"),
 ("수입", "부수입"),
 ("수입", "상여"),
 ("수입", "기타");
+
+select * from item;

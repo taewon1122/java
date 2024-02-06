@@ -138,6 +138,94 @@ WHERE
 	OR_STATE IS NULL OR OR_STATE NOT IN("환불","반품")
 GROUP BY
 	PR_CODE;
+
+# 모든 제품을 조회하는 쿼리 (O)
+SELECT * FROM PRODUCT;
+
+# 모든 카테고리를 조회하는 쿼리 (O)
+SELECT * FROM CATEGORY;
+
+# 제품별 카테고리를 조회, 카테고리, 제품을 조회 (O)
+SELECT 
+    CA_NAME AS 카테고리 , PR_TITLE AS 제품명 
+FROM
+    PRODUCT
+        JOIN
+    CATEGORY ON CA_NUM = PR_CA_NUM;
+    
+# 기타 카테고리에 포함된 모든 제품을 조회 (O)
+SELECT 
+    CA_NAME AS 카테고리 , PR_TITLE AS 제품명
+FROM
+    PRODUCT
+        JOIN
+    CATEGORY ON CA_NUM = PR_CA_NUM
+WHERE
+    CA_NAME = '기타';
+
+# abc123회운이 주문한 제품 목록을 조회
+SELECT 
+    ME_ID AS 아이디, PR_TITLE AS 제품명
+FROM
+    MEMBER
+        JOIN
+    `ORDER` ON ME_ID = OR_ME_ID
+        JOIN
+    PRODUCT ON PR_CODE = OR_PR_CODE
+WHERE
+    ME_ID = 'ABC123';
+#-----------------------------------------
+SELECT 
+    OR_DATE, OR_STATE, OR_AMOUNT, OR_TOTAL_PRICE, PR_TITLE
+FROM
+    `ORDER` 
+        JOIN
+    PRODUCT ON PR_CODE = OR_PR_CODE
+WHERE
+    OR_ME_ID = 'ABC123';
+
+# 제품별 판매수량을 조회하는 쿼리
+SELECT 
+    PR_TITLE, OR_AMOUNT
+FROM
+    PRODUCT
+        JOIN
+    `ORDER` ON PR_CODE = OR_PR_CODE;
+#-----------------------------------------
+SELECT 
+	PRODUCT.*, IFNULL(SUM(OR_AMOUNT),0) AS '판매수량' 
+FROM 
+	`ORDER`
+	RIGHT JOIN PRODUCT
+		ON PR_CODE = OR_PR_CODE
+WHERE OR_STATE NOT IN('반품','환불') OR OR_STATE IS NULL
+GROUP BY PR_CODE;
+
+# 인기 제품 조회, 인기 제품은 누적 판매량을 기준으로 상위 5개 제품
+SELECT 
+	PRODUCT.*, IFNULL(SUM(OR_AMOUNT),0) AS '판매수량' 
+FROM 
+	`ORDER`
+	RIGHT JOIN PRODUCT
+		ON PR_CODE = OR_PR_CODE
+WHERE OR_STATE NOT IN('반품','환불') OR OR_STATE IS NULL
+GROUP BY PR_CODE
+ORDER BY 판매수량 DESC, PR_PRICE ASC
+LIMIT 0, 5;
+
+# 가격이 제일 비싼 제품을 조회
+SELECT * FROM PRODUCT
+ORDER BY PR_PRICE DESC
+LIMIT 0, 1;
+
+
+
+
+
+
+
+    
+    
     
     
     
