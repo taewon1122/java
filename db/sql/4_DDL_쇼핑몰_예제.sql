@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS shoppingmall;
 CREATE DATABASE IF NOT EXISTS shoppingmall;
 
@@ -26,7 +27,7 @@ CREATE TABLE `certification` (
 DROP TABLE IF EXISTS `category`;
 
 CREATE TABLE `category` (
-	`ca_num`	int	PRIMARY KEY,
+	`ca_num`	int	PRIMARY KEY AUTO_INCREMENT,
 	`ca_name`	varchar(10) NOT	NULL
 );
 
