@@ -16,6 +16,7 @@ public class MemberVO {
 	private Date me_stop; 
 	private int me_fail;
 	
+	
 	public MemberVO(String me_id, String me_pw, String me_email, String me_ms_state) {
 		this.me_id = me_id;
 		this.me_pw = me_pw;
