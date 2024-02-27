@@ -18,10 +18,9 @@ public class BoardListServlet extends HttpServlet {
     private BoardService boardService = new BoardServiceImp();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//서비스에게 게시글 리스트를 달라고 요청
-		
+		ArrayList<BoardVO> list = boardService.getBoardList();
 		//화면에 게시글 리스트를 전송
-		
-		
+		request.setAttribute("boardList", list);
 		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
 	}
 	
