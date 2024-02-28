@@ -98,7 +98,7 @@
 			</li>
 		</c:if>
 	</ul>
-	<a href="<c:url value="/board/insert"/>" class="btn btn-outline-danger">글등록</a>
+	<a href="<c:url value="/board/insert"/>" class="btn btn-outline-danger">글 등록</a>
 </div>
 </body>
 </html>

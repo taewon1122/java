@@ -68,4 +68,13 @@
 	<delete id="deleteBoard">
 		DELETE FROM BOARD WHERE bo_num = #{num}
 	</delete>
+	<update id="updateBoard">
+		UPDATE BOARD
+		SET
+			bo_title = #{board.bo_title},
+			bo_content = #{board.bo_content},
+			bo_co_num = #{board.bo_co_num}
+		WHERE
+			bo_num = #{board.bo_num}
+	</update>
 </mapper>
