@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<script type="text/javascript">
-		let msg = '${msg}';//서버에서 보낸 msg값을 변수에 저장
+		let msg = '${msg}';
 		if(msg != ''){
 			alert(msg);
 		}
-		let redirectURL = '${url}'//서버에서 보낸 url을 변수에 저장
+		let redirectURL = '${url}';
 		if(redirectURL != ''){
 			location.href = `<c:url value="/${url}"/>`;
 		}else{
