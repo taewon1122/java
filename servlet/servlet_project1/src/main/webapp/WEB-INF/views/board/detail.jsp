@@ -5,37 +5,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 등록</title>
-<!-- 부트스트랩5 css/js -->
+<title>상세조회</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="/board/insert"/>" method="post">
+	<h1>게시글 상세</h1>
+	<div>
 		<div class="mb-3 mt-3">
    			<label for="community" class="form-label">게시판:</label>
-   			<select class="form-control" id="community" name="community">
-   				<c:forEach items="${list}" var="community">
-   					<option value="${community.co_num}">${community.co_name}</option>
-   				</c:forEach>
-   			</select>
+   			<input type="text" class="form-control" id="community" name="community" readonly value="${board.community.co_name}">
  		</div>
 		<div class="mb-3 mt-3">
    			<label for="title" class="form-label">제목:</label>
-   			<input type="text" class="form-control" id="title" placeholder="제목" name="title">
+   			<input type="text" class="form-control" id="title" name="title" readonly value="${board.bo_title}">
  		</div>
  		<div class="mb-3 mt-3">
    			<label for="writer" class="form-label">작성자:</label>
-   			<input type="text" class="form-control" id="writer" name="writer" value="${user.me_id}">
+   			<input type="text" class="form-control" id="writer" name="writer" readonly value="${board.bo_me_id}">
+ 		</div>
+ 		<div class="mb-3 mt-3">
+   			<label for="view" class="form-label">조회수:</label>
+   			<input type="text" class="form-control" id="view" name="view" readonly value="${board.bo_view}">
  		</div>
  		<div class="mb-3 mt-3">
    			<label for="content" class="form-label">내용:</label>
-   			<textarea rows="10" class="form-control" id="wirter" name="content" placeholder="내용"></textarea>
+   			<textarea rows="10" class="form-control" id="wirter" name="content" readonly>${board.bo_content}</textarea>
  		</div>
- 		<button class="btn btn-outline-warning col-12">글 등록</button>
-	</form>
+ 		<a href="<c:url value="/board/list"/>" class="btn btn-outline-dark" >목록으로</a>
+	</div>
 </div>
 </body>
 </html>
