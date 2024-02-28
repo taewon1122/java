@@ -58,7 +58,6 @@
 	 		</div>
 	 		<button class="btn btn-outline-warning col-12">글 등록</button>
 		</form>
-		${list}
 	</div>
 </body>
 </html>
