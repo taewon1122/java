@@ -16,4 +16,13 @@ public interface BoardDAO {
 
 	ArrayList<CommunityVO> selectCommunityList();
 
+	int selectTotalCount(@Param("cri") Criteria cri);
+
+	boolean updateView(@Param("num") int num);
+
+	BoardVO selectBoard(@Param("num") int num);
+
+	boolean deleteBoard(@Param("num") int num);
+
 }
+  
