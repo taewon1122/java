@@ -21,19 +21,19 @@
 			</div>
 			<div class="mb-3 mt-3">
 				<label class="form-label">제목:</label>
-				<input type="text" class="form-control" id="title" readonly="readonly" value="${board.bo_title}">
+				<input type="text" class="form-control" readonly="readonly" value="${board.bo_title}">
 			</div>
 			<div class="mb-3 mt-3">
 				<label class="form-label">작성자:</label>
-				<input type="text" class="form-control" id="title" readonly="readonly" value="${board.bo_me_id}">
+				<input type="text" class="form-control" readonly="readonly" value="${board.bo_me_id}">
 			</div>
 			<div class="mb-3 mt-3">
 				<label class="form-label">조회수:</label>
-				<input type="text" class="form-control" id="title" readonly="readonly" value="${board.bo_bo_view}">
+				<input type="text" class="form-control" readonly="readonly" value="${board.bo_view}">
 			</div>
 			<div class="mb-3 mt-3">
 				<label class="form-label">내용:</label>
-				<textarea rows="10" class="form-control" id="content" readonly="readonly">"${board.bo_content}"</textarea>
+				<textarea rows="10" class="form-control" readonly="readonly">"${board.bo_content}"</textarea>
 			</div>
 			<button type="submit" class="btn btn-outline-success col-12">게시글 등록</button>
 		</c:when>
@@ -44,6 +44,7 @@
 	<a href="<c:url value="/board/list"/>" class="btn btn-outline-primary">목록으로</a>
 	<c:if test="${user.me_id == board.bo_me_id}">
 		<a href="<c:url value="/board/delete?num=${board.bo_num}"/>" class="btn btn-outline-primary">삭제</a>
+		<a href="<c:url value="/board/update?num=${board.bo_num}"/>" class="btn btn-outline-primary">수정</a>
 	</c:if>	
 </div>
 </body>

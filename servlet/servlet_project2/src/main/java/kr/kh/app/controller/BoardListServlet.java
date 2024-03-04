@@ -28,13 +28,12 @@ public class BoardListServlet extends HttpServlet {
 		int page;
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
-		}catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 			page = 1;
 		}
-		
-		//type과 search와 page를 이용해서 criteria 객체를 생성
-		Criteria cri = new Criteria(1, 2, type, search);
+		//type과 search와 page를 이용해서 Criteria 객체를 생성
+		Criteria cri = new Criteria(page, 2, type, search);
 		
 		//서비스에게 현재 페이지 정보를 주면서 현재 페이지 정보에 맞는 게시글 수를 가져오라고 시킴 : getTotalCount
 		int totalCount = boardService.getTotalCount(cri);
@@ -44,7 +43,7 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("pm", pm);
 		//서비스에게 현재 페이지 정보를 주면서 게시글 리스트를 달라고 요청
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
-		//화면에 게시글 리스트를 전송
+		//화면에 게시글 리스트를 전송 : 화면에서 사용할 이름 - boardList
 		request.setAttribute("boardList", list);
 		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
 	}

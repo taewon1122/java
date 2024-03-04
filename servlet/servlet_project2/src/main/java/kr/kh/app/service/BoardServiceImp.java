@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,7 +19,8 @@ import kr.kh.app.pagination.Criteria;
 
 public class BoardServiceImp implements BoardService{
 	
-	private BoardDAO boardDao;
+private BoardDAO boardDao;
+	
 	public BoardServiceImp() {
 		String resource = "kr/kh/app/config/mybatis-config.xml";
 		InputStream inputStream;
@@ -31,26 +34,25 @@ public class BoardServiceImp implements BoardService{
 			e.printStackTrace();
 		}
 	}
+
 	@Override
 	public ArrayList<BoardVO> getBoardList(Criteria cri) {
-		//현재 페이지 null처리
+		//현재 페이지정보 null 처리 
 		if(cri == null) {
 			cri = new Criteria();
 		}
-		
 		return boardDao.selectBoardList(cri);
 	}
-	
+
 	@Override
 	public boolean insertBoard(BoardVO board) {
-		if( board == null ||
-			!checkString(board.getBo_title()) ||
+		if( board == null || 
+			!checkString(board.getBo_title()) || 
 			!checkString(board.getBo_content())) {
 			return false;
 		}
 		return boardDao.insertBoard(board);
 	}
-	
 	//문자열이 null이거나 빈 문자열이면 false, 아니면 true를 반환하는 메서드
 	public boolean checkString(String str) {
 		if(str == null || str.length() == 0) {
@@ -58,11 +60,12 @@ public class BoardServiceImp implements BoardService{
 		}
 		return true;
 	}
-	
+
 	@Override
 	public ArrayList<CommunityVO> getCommunityList() {
 		return boardDao.selectCommunityList();
 	}
+
 	@Override
 	public int getTotalCount(Criteria cri) {
 		if(cri == null) {
@@ -70,14 +73,17 @@ public class BoardServiceImp implements BoardService{
 		}
 		return boardDao.selectTotalCount(cri);
 	}
+
 	@Override
 	public boolean updateView(int num) {
 		return boardDao.updateView(num);
 	}
+
 	@Override
 	public BoardVO getBoard(int num) {
 		return boardDao.selectBoard(num);
 	}
+
 	@Override
 	public boolean deleteBoard(int num, MemberVO user) {
 		if(user == null) {
@@ -91,6 +97,28 @@ public class BoardServiceImp implements BoardService{
 		}
 		//게시글을 삭제 요청
 		return boardDao.deleteBoard(num);
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board, MemberVO user) {
+		//게시글 null 체크
+		if( board == null ||
+			!checkString(board.getBo_title()) ||
+			!checkString(board.getBo_content())) {
+			return false;
+		}
+		//회원 null체크
+		if(user == null) {
+			return false;
+		}
+		//게시글 번호를 이용하여 게시글을 가져옴
+		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		//게시글이 없거나 작성자가 회원이 아니면 false를 리턴
+		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		//서비스에게 게시글을 주면서 수정하라고 요청
+		return boardDao.updateBoard(board);
 	}
 	
 }

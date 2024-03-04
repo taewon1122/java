@@ -22,4 +22,5 @@ public class BoardVO {
 		this.bo_me_id = writer;
 		this.bo_co_num = co_num;
 	}
+
 }

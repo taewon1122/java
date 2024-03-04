@@ -12,7 +12,7 @@ import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 
-@WebServlet("/BoardDeleteServlet")
+@WebServlet("/board/delete")
 public class BoardDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService boardService = new BoardServiceImp();
