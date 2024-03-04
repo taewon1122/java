@@ -26,6 +26,7 @@
    			<label for="writer" class="form-label">작성자:</label>
    			<input type="text" class="form-control" id="writer" name="writer" readonly value="${board.bo_me_id}">
  		</div>
+ 		
  		<div class="mb-3 mt-3">
    			<label for="view" class="form-label">조회수:</label>
    			<input type="text" class="form-control" id="view" name="view" readonly value="${board.bo_view}">
@@ -34,6 +35,12 @@
    			<label for="content" class="form-label">내용:</label>
    			<textarea rows="10" class="form-control" id="wirter" name="content" readonly>${board.bo_content}</textarea>
  		</div>
+ 		<c:if test="${file != null }">
+		  	<div class="mb-3 mt-3">
+			    <label for="content" class="form-label">첨부파일:</label>
+			    <a href="<c:url value="/download?filename=${file.fi_name}"/>" class="form-control" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
+		  	</div>
+	  	</c:if>
  		<a href="<c:url value="/board/list"/>" class="btn btn-outline-dark" >목록으로</a>
  		<c:if test="${board.bo_me_id == user.me_id}">
  			<a href="<c:url value="/board/delete?num=${board.bo_num}"/>" class="btn btn-outline-danger">삭제</a>
