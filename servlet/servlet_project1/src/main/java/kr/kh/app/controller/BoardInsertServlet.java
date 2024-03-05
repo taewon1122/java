@@ -50,7 +50,7 @@ public class BoardInsertServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//게시글 작성 화면에서 장시간 가만히 있으며 ㄴ세션이 만료되서 로그인이 풀림
+		//게시글 작성 화면에서 장시간 가만히 있으면 세션이 만료되서 로그인이 풀림
 		//로그인이 풀리면 게시글을 작성할 수 없게 해야하기 때문에
 		HttpSession session = request.getSession();
     	MemberVO user = (MemberVO)session.getAttribute("user");
@@ -65,10 +65,10 @@ public class BoardInsertServlet extends HttpServlet {
     	BoardVO board = new BoardVO(co_num, title, content, writer);
     	
     	//첨부파일을 가져옴
-    	Part filePart = request.getPart("file");
+    	ArrayList<Part> partList = (ArrayList<Part>)request.getParts();
     	
     	//서비스에게 게시글을 주면서 등록하라고 시킴
-    	if(boardService.insertBoard(board, filePart)) {
+    	if(boardService.insertBoard(board, partList)) {
     		response.sendRedirect(request.getContextPath()+"/board/list");
     	}else {
     		response.sendRedirect(request.getContextPath()+"/board/insert");

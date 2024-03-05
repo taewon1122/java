@@ -1,5 +1,6 @@
 package kr.kh.app.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public boolean insertBoard(BoardVO board, Part filePart) {
+	public boolean insertBoard(BoardVO board, ArrayList<Part> partList) {
 		if( board == null|| 
 			!checkString(board.getBo_content()) ||
 			!checkString(board.getBo_title()) 
@@ -48,12 +49,14 @@ public class BoardServiceImp implements BoardService {
 		}
 		boolean res = boardDao.insertBoard(board);
 		
-		//첨부파일 업로드
 		if(!res) {
 			return false;
 		}
 		
-		uploadFile(filePart, board.getBo_num());
+		//첨부파일 업로드
+		for(Part filePart : partList) {
+			uploadFile(filePart, board.getBo_num());
+		}
 		return res;
 	}
 
@@ -100,12 +103,19 @@ public class BoardServiceImp implements BoardService {
 			!board.getBo_me_id().equals(user.getMe_id())) {
 			return false;
 		}
+		
+		//게시글의 첨부파일을 서버 폴더에서 삭제(실제 파일)
+		//게시글의 첨부파일을 DB에서 삭제(CASCADE로도 가능)
+		//게시글에 있는 첨부파일 정보를 가져옴
+		//FileVO fileVo = boardDao.selectFileByBo_num(num);
+		
+		//deleteFile(fileVo);
 		//같으면 게시글 삭제 후 삭제 여부를 반환
 		return boardDao.deleteBoard(num);
 	}
 
 	@Override
-	public boolean updateBoard(BoardVO board, MemberVO user) {
+	public boolean updateBoard(BoardVO board, MemberVO user, int fi_num, Part file) {
 		if(user == null || user.getMe_id() == null) {
 			return false;
 		}
@@ -114,6 +124,14 @@ public class BoardServiceImp implements BoardService {
 			!checkString(board.getBo_content())) {
 			return false;
 		}
+		
+		//첨부파일 추가
+		uploadFile(file, board.getBo_num());
+		
+		//첨부파일 삭제
+		FileVO fileVo = boardDao.selectFile(fi_num);
+		deleteFile(fileVo);
+		
 		//게시글 번호를 이용하여 게시글을 가져옴
 		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
 		//게시글 작성자와 회원 아이디를 비교하여 다르면 ㄹ민ㄷ 반환
@@ -145,8 +163,20 @@ public class BoardServiceImp implements BoardService {
 		boardDao.insertFile(file);
 	}
 
+	private void deleteFile(FileVO fileVo) {
+		if(fileVo == null) {
+			return;
+		}
+		File file = new File(uploadPath
+				+ fileVo.getFi_name().replace('/', File.separatorChar));
+		if(file.exists()) {
+			file.delete();
+		}
+		boardDao.deleteFile(fileVo.getFi_num());
+	}
+
 	@Override
-	public FileVO getFile(int num) {
+	public ArrayList<FileVO> getFile(int num) {
 		return boardDao.selectFileByBo_num(num);
 	}
 }
