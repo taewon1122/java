@@ -148,11 +148,6 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.updateBoard(board);
 	}
 	
-	@Override
-	public ArrayList<FileVO> getFile(int num) {
-		return boardDao.selectFileByBo_Num(num);
-	}
-	
 	private void uploadFile(Part part, int bo_num) {
 		//업로드할 첨부 파일이 없거나 게시글 번호가 0번이면 리턴
 		if(part == null || bo_num == 0) {
@@ -168,5 +163,10 @@ public class BoardServiceImp implements BoardService{
 		//DB에 추가
 		FileVO fileVo = new FileVO(bo_num, fileName, fileOriginalName);
 		boardDao.insertFile(fileVo);
+	}
+
+	@Override
+	public ArrayList<FileVO> getFile(int num) {
+		return boardDao.selectFileByBo_num(num);
 	}
 }

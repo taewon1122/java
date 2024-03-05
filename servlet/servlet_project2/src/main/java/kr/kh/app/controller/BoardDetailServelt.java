@@ -33,9 +33,10 @@ public class BoardDetailServelt extends HttpServlet {
     	//화면에 게시글을 전송 
     	request.setAttribute("board", board);
     	
+    	//게시글 번호와 같은 게시글에 저장된 파일을 가져온다
     	ArrayList<FileVO> fileList = boardService.getFile(num);
+    	//화면에 뿌려줌
     	request.setAttribute("fileList", fileList);
-    	
     	
     	request.getRequestDispatcher("/WEB-INF/views/board/detail.jsp").forward(request, response);
 	}
