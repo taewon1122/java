@@ -24,6 +24,7 @@ public class BoardServiceImp implements BoardService {
 	
 	private BoardDAO boardDao;
 	private String uploadPath = "D:\\uploads";
+	
 	public BoardServiceImp() {
 		String resource = "kr/kh/app/config/mybatis-config.xml";
 		try {

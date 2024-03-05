@@ -1,10 +1,11 @@
 package kr.kh.app.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.Part;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -14,12 +15,15 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
+import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.pagination.Criteria;
+import kr.kh.app.utils.FileUploadUtils;
 
 public class BoardServiceImp implements BoardService{
 	
-private BoardDAO boardDao;
+	private BoardDAO boardDao;
+	private String uploadPath = "D:\\uploads";
 	
 	public BoardServiceImp() {
 		String resource = "kr/kh/app/config/mybatis-config.xml";
@@ -33,6 +37,11 @@ private BoardDAO boardDao;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		//uploadPath경로에 폴더가 없으면 폴더를 생성해줌
+		File file = new File(uploadPath);
+		if(!file.exists()) {
+			file.mkdirs();
+		}
 	}
 
 	@Override
@@ -45,14 +54,32 @@ private BoardDAO boardDao;
 	}
 
 	@Override
-	public boolean insertBoard(BoardVO board) {
+	public boolean insertBoard(BoardVO board, ArrayList<Part> partList) {
 		if( board == null || 
 			!checkString(board.getBo_title()) || 
 			!checkString(board.getBo_content())) {
 			return false;
 		}
-		return boardDao.insertBoard(board);
+		if( !checkString(board.getBo_me_id())) {
+			return false;
+		}
+		boolean res = boardDao.insertBoard(board);
+		//게시글 등록에 실패한 경우
+		if(!res) {
+			return false;
+		}
+		//첨부파일이 없는경우
+		if(partList == null || partList.size() == 0) {
+			return true;
+		}
+		
+		//첨부파일 업로드(part -> 실제 업로드 파일)
+		for(Part part : partList) {
+			uploadFile(part, board.getBo_num());
+		}
+		return true;
 	}
+
 	//문자열이 null이거나 빈 문자열이면 false, 아니면 true를 반환하는 메서드
 	public boolean checkString(String str) {
 		if(str == null || str.length() == 0) {
@@ -121,4 +148,25 @@ private BoardDAO boardDao;
 		return boardDao.updateBoard(board);
 	}
 	
+	@Override
+	public ArrayList<FileVO> getFile(int num) {
+		return boardDao.selectFileByBo_Num(num);
+	}
+	
+	private void uploadFile(Part part, int bo_num) {
+		//업로드할 첨부 파일이 없거나 게시글 번호가 0번이면 리턴
+		if(part == null || bo_num == 0) {
+			return;
+		}
+		//서버에 업로드
+		String fileOriginalName = FileUploadUtils.getFileName(part);
+		if(!checkString(fileOriginalName)) {
+			return;
+		}
+		//서버폴더경로(경로에 실제 폴더가 있어야함)와 실제 업로드할 파일 필요
+		String fileName = FileUploadUtils.upload(uploadPath, part);
+		//DB에 추가
+		FileVO fileVo = new FileVO(bo_num, fileName, fileOriginalName);
+		boardDao.insertFile(fileVo);
+	}
 }

@@ -14,6 +14,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
 	<form action="<c:url value="/board/insert"/>" method="post" enctype="multipart/form-data">
+		<h1>게시글 등록</h1>
 		<div class="mb-3 mt-3">
    			<label for="community" class="form-label">게시판:</label>
    			<select class="form-control" id="community" name="community">
@@ -32,7 +33,7 @@
  		</div>
  		<div class="mb-3 mt-3">
    			<label for="content" class="form-label">내용:</label>
-   			<textarea rows="10" class="form-control" id="wirter" name="content" placeholder="내용"></textarea>
+   			<textarea rows="10" class="form-control" id="content" name="content" placeholder="내용"></textarea>
  		</div>
  		<div class="mb-3 mt-3">
    			<label for="content" class="form-label">첨부파일:</label>

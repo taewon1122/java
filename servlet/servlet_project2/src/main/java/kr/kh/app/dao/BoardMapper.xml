@@ -40,7 +40,8 @@
 		select * from community where co_num = #{bo_co_num}
 	</select>
 	
-	<insert id="insertBoard">
+	<!-- useGeneratedKeys,keyProperty 게시글 추가할때 게시글 번호 받아옴 -->
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
 		insert into board(bo_title, bo_content, bo_me_id, bo_co_num)
 		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},#{board.bo_co_num})
 	</insert>
@@ -91,4 +92,11 @@
 		WHERE
 			bo_num = #{board.bo_num}
 	</update>
+	<insert id="insertFile">
+		INSERT INTO file(fi_bo_num, fi_name, fi_ori_name)
+		VALUES(#{file.fi_bo_num}, #{file.fi_name}, #{file.fi_ori_name})
+	</insert>
+	<select id="selectFileByBo_Num" resultType="kr.kh.app.model.vo.FileVO">
+		select * from file where fi_bo_num = #{num}
+	</select>
 </mapper>

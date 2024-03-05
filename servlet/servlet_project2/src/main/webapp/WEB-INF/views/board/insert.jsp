@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="/board/insert"/>" method="post">
+	<form action="<c:url value="/board/insert"/>" method="post" enctype="multipart/form-data">
 		<h1>게시글 등록</h1>
 		<div class="mb-3 mt-3">
 			<label for="community" class="form-label">게시판:</label>
@@ -27,10 +27,20 @@
 			<input type="text" class="form-control" id="title" placeholder="제목" name="title">
 		</div>
 		<div class="mb-3 mt-3">
+   			<label for="writer" class="form-label">작성자:</label>
+   			<input type="text" class="form-control" id="writer" name="writer" value="${user.me_id}">
+ 		</div>
+		<div class="mb-3 mt-3">
 			<label for="content" class="form-label">내용:</label>
 			<textarea rows="10" class="form-control" id="content" placeholder="내용" name="content"></textarea>
 		</div>
-		<button type="submit" class="btn btn-outline-success col-12">게시글 등록</button>
+		<div class="mb-3 mt-3">
+			<label for="content" class="form-label">첨부파일:</label>
+			<input type="file" name="file" class="form-control">
+			<input type="file" name="file" class="form-control">
+			<input type="file" name="file" class="form-control">
+		</div>
+		<button class="btn btn-outline-success col-12">게시글 등록</button>
 	</form>
 </div>
 </body>
