@@ -35,11 +35,13 @@ public class BoardDeleteServlet extends HttpServlet {
 			//화면에 url로 board/list를 전송
 			request.setAttribute("url", "board/list");
 		}
+		else {
 			//실패하면
 			//화면에 msg로 게시글을 삭제하지 못했습니다라고 전송
 			request.setAttribute("msg", "게시글을 삭제하지 못했습니다");
 			//화면에 url로 board/detail?num=번호를 전송
 			request.setAttribute("url", "board/detail?num=번호");
+		}
 		//message.jsp 화면을 전송
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}

@@ -107,15 +107,18 @@ public class BoardServiceImp implements BoardService {
 		//게시글의 첨부파일을 서버 폴더에서 삭제(실제 파일)
 		//게시글의 첨부파일을 DB에서 삭제(CASCADE로도 가능)
 		//게시글에 있는 첨부파일 정보를 가져옴
-		//FileVO fileVo = boardDao.selectFileByBo_num(num);
+		ArrayList<FileVO> fileList = boardDao.selectFileByBo_num(num);
 		
-		//deleteFile(fileVo);
+		for(FileVO file : fileList) {
+			deleteFile(file);
+		}
+		
 		//같으면 게시글 삭제 후 삭제 여부를 반환
 		return boardDao.deleteBoard(num);
 	}
 
 	@Override
-	public boolean updateBoard(BoardVO board, MemberVO user, int fi_num, Part file) {
+	public boolean updateBoard(BoardVO board, MemberVO user, ArrayList<Integer> nums, ArrayList<Part> fileList) {
 		if(user == null || user.getMe_id() == null) {
 			return false;
 		}
@@ -126,14 +129,19 @@ public class BoardServiceImp implements BoardService {
 		}
 		
 		//첨부파일 추가
-		uploadFile(file, board.getBo_num());
+		for(Part file : fileList) {
+			uploadFile(file, board.getBo_num());
+		}
 		
 		//첨부파일 삭제
-		FileVO fileVo = boardDao.selectFile(fi_num);
-		deleteFile(fileVo);
+		for(int fi_num : nums) {
+			FileVO fileVo = boardDao.selectFile(fi_num);
+			deleteFile(fileVo);
+		}
 		
 		//게시글 번호를 이용하여 게시글을 가져옴
 		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+
 		//게시글 작성자와 회원 아이디를 비교하여 다르면 ㄹ민ㄷ 반환
 		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
 			return false;
