@@ -33,7 +33,11 @@
  		</div>
  		<div class="mb-3 mt-3">
    			<label for="content" class="form-label">내용:</label>
-   			<textarea rows="10" class="form-control" id="wirter" name="content" readonly>${board.bo_content}</textarea>
+   			<div class="form-control" style="min-heigt: 400px;">${board.bo_content}</div>
+ 		</div>
+ 		<div class="mb-3 mt-3 clearfix">
+			<button type="button" id="btnUp" data-state="1" class="btn btn-outline-danger col-5 float-start">추천</button>
+			<button type="button" id="btnDown" data-state="-1" class="btn btn-outline-danger col-5 float-end">비추천</button>
  		</div>
  		<c:if test="${fileList != null && fileList.size() != 0}">
 		  	<div class="mb-3 mt-3">
@@ -50,5 +54,34 @@
  		</c:if>		
 	</div>
 </div>
+<script type="text/javascript">
+	let btnUp = document.getElementById("btnUp");
+	let btnDown = document.getElementById("btnDown");
+	
+	btnUp.onclick = recommend;
+	
+	btnDown.onclick = recommend;
+	
+	function recommend() {
+		//로그인 안했으면
+		if('${user.me_id}' == ''){
+			if(confirm("로그인이 필요한 서비스입니다. 로그인으로 이동하겟습니까?")){
+				location.href = "<c:url value='/login'/>"
+			}
+			//취소 누르면 현재 페이지에서 추천/비추천 동작을 안함
+			else{
+				//return;
+			}
+		}
+		
+		let boNum = '${board.bo_num}';
+		//state가 1이면 추천, -1이면 비추천
+		let state = this.getAttribute("data-state");
+		fetch(`<c:url value="/recommend"/>?boNum=\${boNum}&state=\${state}`)
+		.then(response => response.text())
+		.then(data => console.log(data))
+		.catch(error => console.error(error));
+	}
+</script>
 </body>
 </html>
