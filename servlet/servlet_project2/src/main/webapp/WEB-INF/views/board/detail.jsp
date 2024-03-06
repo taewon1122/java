@@ -50,10 +50,10 @@
 		</c:otherwise>
 	</c:choose>
 	<a href="<c:url value="/board/list"/>" class="btn btn-outline-primary">목록으로</a>
-	<c:if test="${user.me_id == board.bo_me_id}">
-		<a href="<c:url value="/board/delete?num=${board.bo_num}"/>" class="btn btn-outline-primary">삭제</a>
-		<a href="<c:url value="/board/update?num=${board.bo_num}"/>" class="btn btn-outline-primary">수정</a>
-	</c:if>	
+	<c:if test="${board.bo_me_id == user.me_id}">
+		<a href="<c:url value="/board/delete?num=${board.bo_num}"/>"class="btn btn-outline-danger">삭제</a>
+		<a href="<c:url value="/board/update?num=${board.bo_num}"/>"class="btn btn-outline-danger">수정</a>
+	</c:if>
 </div>
 </body>
 </html>
