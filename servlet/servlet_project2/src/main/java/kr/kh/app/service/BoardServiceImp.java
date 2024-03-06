@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.BoardDAO;
+import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.FileVO;
@@ -135,7 +136,7 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public boolean updateBoard(BoardVO board, MemberVO user) {
+	public boolean updateBoard(BoardVO board, MemberVO user, String[] nums, ArrayList<Part> partList) {
 		//게시글 null 체크
 		if( board == null ||
 			!checkString(board.getBo_title()) ||
@@ -151,6 +152,21 @@ public class BoardServiceImp implements BoardService{
 		//게시글이 없거나 작성자가 회원이 아니면 false를 리턴
 		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
 			return false;
+		}
+		//삭제할 첨부파일 삭제
+		for(String numStr : nums) {
+			try {
+				int num = Integer.parseInt(numStr);
+				FileVO fileVo = boardDao.selectFile(num);
+				deleteFile(fileVo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//추가할 첨부파일 추가
+		for(Part part : partList) {
+			uploadFile(part, board.getBo_num());
 		}
 		//서비스에게 게시글을 주면서 수정하라고 요청
 		return boardDao.updateBoard(board);
