@@ -28,6 +28,6 @@ public interface BoardService {
 
 	boolean updateBoard(BoardVO board, MemberVO user);
 
-	ArrayList<FileVO> getFile(int num);
+	ArrayList<FileVO> getFileList(int num);
 
 }

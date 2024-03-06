@@ -37,8 +37,9 @@
 			</div>
 			<c:if test="${fileList != null && fileList.size() != 0 }">
 				<div class="mb-3 mt-3">
-					<label for="content" class="form-label">첨부파일:</label>
+					<label for="content" class="form-label">첨부파일</label>
 					<c:forEach items="${fileList}" var="file">
+					<!-- 파일 번호로 보내면 검색해야하기 때문에 파일 이름으로 보낸다 / download 속성 지정 -> 다운로드된 파일 이름 지정 가능 -->
 					<a href="<c:url value="/download?filename=${file.fi_name}"/>" class="form-control" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 					</c:forEach>
 				</div>

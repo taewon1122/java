@@ -30,7 +30,7 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file") FileVO fileVo);
 
-	ArrayList<FileVO> selectFileByBo_num(@Param("num") int num);
+	ArrayList<FileVO> selectFileList(@Param("bo_num") int num);
 
 }
   
