@@ -79,7 +79,15 @@
 		let state = this.getAttribute("data-state");
 		fetch(`<c:url value="/recommend"/>?boNum=\${boNum}&state=\${state}`)
 		.then(response => response.text())
-		.then(data => console.log(data))
+		.then(data => {
+			let str = state == 1 ? '추천' : '비추천';
+			switch (data) {
+				case "1": alert('게시글을 추천했습니다.'); break;
+				case "-1": alert('게시글을 비추천했습니다.'); break;
+				case "0": alert(`게시글 \${str}을 취소했습니다.`); break;
+				default: alert(data); break;
+			}				
+		})
 		.catch(error => console.error(error));
 	}
 </script>

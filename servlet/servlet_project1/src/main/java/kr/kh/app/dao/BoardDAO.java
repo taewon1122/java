@@ -8,6 +8,7 @@ import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.RecommendVO;
 import kr.kh.app.pagination.Criteria;
 
 public interface BoardDAO {
@@ -35,5 +36,11 @@ public interface BoardDAO {
 	void deleteFile(@Param("fi_num") int fi_num);
 
 	FileVO selectFile(@Param("fi_num") int fi_num);
+
+	RecommendVO selectRecommend(@Param("me_id") String me_id, @Param("bo_num") int bo_num);
+
+	void insertRecommend(@Param("re") RecommendVO recommend);
+
+	void updateRecommend(@Param("re") RecommendVO recommend);
 
 }
