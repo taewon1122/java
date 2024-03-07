@@ -185,6 +185,15 @@ public class BoardServiceImp implements BoardService {
 		}
 	}
 	
+	@Override
+	public RecommendVO getRecommend(MemberVO user, int num) {
+		if(user == null) {
+			return null;
+		}
+		return boardDao.selectRecommend(user.getMe_id(), num);
+	}
+
+	
 	private boolean checkString(String str) {
 		if(str == null || str.length() == 0) {
 			return false;
@@ -218,5 +227,4 @@ public class BoardServiceImp implements BoardService {
 		boardDao.deleteFile(fileVo.getFi_num());
 	}
 
-	
 }
