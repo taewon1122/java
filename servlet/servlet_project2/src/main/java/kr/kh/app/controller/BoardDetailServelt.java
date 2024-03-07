@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.FileVO;
+import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.RecommendVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 
@@ -18,6 +20,7 @@ import kr.kh.app.service.BoardServiceImp;
 public class BoardDetailServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService boardService = new BoardServiceImp();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//화면에서 보내준 num를 가져옴
     	int num;
@@ -30,14 +33,18 @@ public class BoardDetailServelt extends HttpServlet {
     	boardService.updateView(num);
     	//서비스에게 게시글 번호가 num인 게시글을 가져오라고 요청
     	BoardVO board = boardService.getBoard(num);
-    	//화면에 게시글을 전송 
-    	request.setAttribute("board", board);
-    	
     	//게시글 번호를 주면서 첨부파일을 가져오라고 서비스에게 시킴(여러개 -> list 하나 -> vo / 기본키 -> vo)
     	ArrayList<FileVO> fileList = boardService.getFileList(num);
+    	
+    	//화면에 게시글을 전송 
+    	request.setAttribute("board", board);
     	//화면에 뿌려줌
     	request.setAttribute("fileList", fileList);
     	
+    	//회원의 게시글 추천 상태를 가져와서 화면에 전송
+    	MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+    	RecommendVO recommend = boardService.getRecommend(num, user);
+    	request.setAttribute("recommend", recommend);
     	request.getRequestDispatcher("/WEB-INF/views/board/detail.jsp").forward(request, response);
 	}
 

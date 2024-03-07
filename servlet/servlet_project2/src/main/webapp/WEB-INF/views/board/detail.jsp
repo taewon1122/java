@@ -35,6 +35,11 @@
 				<label class="form-label">내용:</label>
 				<textarea rows="10" class="form-control" readonly="readonly">"${board.bo_content}"</textarea>
 			</div>
+			<div class="mb-3 mt-3 clearfix">
+				<!-- button태그 기본 type submit -> type button으로 지정하지 않으면 전송될 수 있음. -->
+				<button type="button" class="btn btn-outline-success btn-up float-start col-6" data-state="1">추천</button>
+				<button type="button" class="btn btn-outline-success btn-down float-end col-6" data-state="-1">비추천</button>
+			</div>
 			<c:if test="${fileList != null && fileList.size() != 0 }">
 				<div class="mb-3 mt-3">
 					<label for="content" class="form-label">첨부파일</label>
@@ -55,5 +60,68 @@
 		<a href="<c:url value="/board/update?num=${board.bo_num}"/>"class="btn btn-outline-danger">수정</a>
 	</c:if>
 </div>
+
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+	$(".btn-up, .btn-down").click(function(){
+		
+		if('${user.me_id}' == ''){
+			if(confirm("로그인이 필요한 서비스입니다. 로그인 페이지로 이동하겠습니까?")){
+				location.href = '<c:url value="/login"/>'
+			}else{
+				return;
+			}
+		}
+		
+		let state = $(this).data('state');
+		let boNum = '${board.bo_num}'
+		$.ajax({
+			url : '<c:url value="/recommend"/>',
+			method : 'get',
+			//동기 작업 -> 앞의 작업이 다 끝날때까지 기다림. 비동기 작업 -> 앞의 작업 다 안끝나도 뒷 일을 함.
+			async : true, //동기/비동기 선택, true : 비동기, false : 동기
+			data : {
+				//왼쪽 속성명, 오른쪽 변수
+				"state" : state,
+				"boNum" : boNum
+			}, 
+			success : function(data){
+				initBtn(".btn-up","btn-outline-success", "btn-success");
+				initBtn(".btn-down","btn-outline-success", "btn-success");
+				switch (data) {
+				case "1":
+					alert("추천 되었습니다");
+					initBtn(".btn-up", "btn-success","btn-outline-success");
+					break;
+				case "0":
+					alert(`\${state == 1 ? '' : '비'}추천이 취소 되었습니다.`);
+					break;
+				case "-1":
+					alert("비추천 되었습니다");
+					initBtn(".btn-down", "btn-success", "btn-outline-success");
+					break;
+				}
+			},
+			error : function (a, b, c){
+				console.error("예외 발생");
+			}
+		});//ajax end
+		
+	});//click end
+	
+	function initBtn(selector, addClassName, removeClassName){
+		$(selector).addClass(addClassName);
+		$(selector).removeClass(removeClassName);
+	}
+	
+	<c:if test="${recommend != null}">
+		<c:if test="${recommend.re_state == 1}">
+			initBtn(".btn-up","btn-success","btn-outline-success");
+		</c:if>
+		<c:if test="${recommend.re_state == -1}">
+			initBtn(".btn-down","btn-success","btn-outline-success");
+		</c:if>
+	</c:if>
+</script>
 </body>
 </html>

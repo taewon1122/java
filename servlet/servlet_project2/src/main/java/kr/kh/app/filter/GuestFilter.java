@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter("/GuestFilter")
+@WebFilter("/guestfilter")
 public class GuestFilter extends HttpFilter implements Filter {
        
 	private static final long serialVersionUID = 6475784911475836991L;
