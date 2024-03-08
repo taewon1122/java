@@ -237,4 +237,10 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.insertComment(comment);
 	}
 
+	@Override
+	public ArrayList<CommentVO> getCommentList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

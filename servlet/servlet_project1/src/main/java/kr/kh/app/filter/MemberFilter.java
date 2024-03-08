@@ -16,7 +16,7 @@ import kr.kh.app.model.vo.MemberVO;
 //로그인한 회원만 접근할 수 있는 URL에서 동작하는 필터
 @WebFilter({
 	"/board/insert", "/board/updatem", "/board/delete", "/recommend", 
-	"/comment/insert", "/comment/uptdate", "comment/delete"
+	"/comment/insert", "/comment/uptdate", "/comment/delete"
 	})
 public class MemberFilter extends HttpFilter implements Filter {
 

@@ -90,7 +90,7 @@
 	<select id="selectFile" resultType="kr.kh.app.model.vo.FileVO">
 		SELECT * FROM file where fi_num = #{fi_num}
 	</select>
-	<select id="selectRecommend" resultType="kr.kh.app.model.vo.RecommendVO">
+	<select id="selectRecommend" resultType="selectCommentList">
 		select * from recommend where re_bo_num = #{bo_num} and re_me_id = #{me_id}
 	</select>
 	<insert id="insertRecommend">
@@ -108,4 +108,10 @@
 		insert into comment(cm_bo_num, cm_content, cm_me_id)
 		values(#{co.cm_bo_num}, #{co.cm_content}, #{co.cm_me_id})
 	</insert>
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment
+		where cm_bo_num = #{cri.boNum}
+		order by cm_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
 </mapper>
