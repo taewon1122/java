@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <title>게시글 등록</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -36,7 +36,7 @@
  		</div>
 		<div class="mb-3 mt-3">
 			<label for="content" class="form-label">내용:</label>
-			<textarea rows="10" class="form-control" id="content" placeholder="내용" name="content"></textarea>
+			<textarea class="form-control" id="content" name="content"></textarea>
 		</div>
 		<div class="mb-3 mt-3">
 			<label for="content" class="form-label">첨부파일:</label>
@@ -48,11 +48,11 @@
 	</form>
 </div>
 <script type="text/javascript">
-  $('[name=content]').summernote({
-    placeholder: '내용',
-    tabsize: 2,
-    height: 400
-  });
+$('#content').summernote({
+	placeholder:'내용',
+	tabsize: 2,
+	height: 400,
+});
 </script>
 </body>
 </html>

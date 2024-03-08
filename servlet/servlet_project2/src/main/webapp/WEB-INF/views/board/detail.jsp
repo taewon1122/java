@@ -36,8 +36,8 @@
 				<input type="text" class="form-control" readonly="readonly" value="${board.bo_view}">
 			</div>
 			<div class="mb-3 mt-3">
-				<label class="form-label">내용:</label>
-				<textarea rows="10" class="form-control" readonly="readonly">"${board.bo_content}"</textarea>
+				<label for="content" class="form-label">내용:</label>
+				<textarea style="min-height: 400px" class="form-control" readonly="readonly">"${board.bo_content}"</textarea>
 			</div>
 			<div class="mb-3 mt-3 clearfix">
 				<!-- button태그 기본 type submit -> type button으로 지정하지 않으면 전송될 수 있음. -->
