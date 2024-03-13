@@ -19,7 +19,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<a class="navbar-brand" href="#">Logo</a>
 	<ul class="navbar-nav">
-		<c:if test="${user != null}">
+		<c:if test="${user == null}">
 			<li class="nav-item">
 				<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
 			</li>
