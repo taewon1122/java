@@ -31,11 +31,13 @@ public class BoardUpdateServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//게시글 번호를 가져옴
-		int num;
+		int num, bo_num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
+			bo_num = Integer.parseInt(request.getParameter("bo_num"));
 		} catch (Exception e) {
 			num = 0;
+			bo_num = 0;
 		}
 		//번호와 일치하는 게시글을 가져옴
 		BoardVO board = boardService.getBoard(num);
