@@ -25,16 +25,27 @@
 	<!-- 클래스들을 읽어 올 수 잇게 기본 패키지를 지정 -->
 	<context:component-scan base-package="kr.kh.spring.*" />
 	<!-- LoginInterceptor를 등록 -->
-	<beans:bean id="LoginInterceptor"
+	<beans:bean id="loginInterceptor"
 		class="kr.kh.spring.interceptor.LoginInterceptor"/>
+	<beans:bean id="memberInterceptor"
+	class="kr.kh.spring.interceptor.MemberInterceptor"/>
 	
 	<!-- LoginInterceptor가 실행된 URL 지정 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/login"/>
-			<beans:ref bean="LoginInterceptor"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	<!-- MemberInterceptor가 실행된 URL 지정 -->
+		<interceptor>
+			<mapping path="/board/insert"/>
+			<mapping path="/board/update"/>
+			<mapping path="/board/delete"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	
 	
 	<!-- 타일즈 뷰 리졸버 추가 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">

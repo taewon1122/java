@@ -112,7 +112,6 @@ public class BoardController {
 	@PostMapping("/board/update")
 	public String boardUpdate(Model model, BoardVO board, MultipartFile []file, int [] delNums, HttpSession session) {
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		System.out.println(board);
 		boolean res= boardService.updateBoard(board, user,file, delNums);
 		if(res) {
 			model.addAttribute("url", "/board/detail?boNum="+board.getBo_num());
