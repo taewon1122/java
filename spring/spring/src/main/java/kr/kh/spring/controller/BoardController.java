@@ -93,4 +93,34 @@ public class BoardController {
 		//삭제 실패시 실패 처리
 		return "message";
 	}
+	
+	@GetMapping("/board/update")
+	public String boardUpdate(Model model, int boNum, HttpSession session) {
+		//커뮤니티 리스트를 가져와서 화면에 전송
+		ArrayList<CommunityVO> list = boardService.getCommunityList();
+		//게시글을 가져옴
+		BoardVO board = boardService.getBoard(boNum);
+		//첨부파일을 가져옴
+		ArrayList<FileVO> fileList = boardService.getFileList(boNum);
+		
+		model.addAttribute("fileList", fileList);
+		model.addAttribute("board", board);
+		model.addAttribute("list", list);
+		return "/board/update";
+	}
+	
+	@PostMapping("/board/update")
+	public String boardUpdate(Model model, BoardVO board, MultipartFile []file, int [] delNums, HttpSession session) {
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		System.out.println(board);
+		boolean res= boardService.updateBoard(board, user,file, delNums);
+		if(res) {
+			model.addAttribute("url", "/board/detail?boNum="+board.getBo_num());
+			model.addAttribute("msg", "게시글을 수정했습니다.");
+		}else {
+			model.addAttribute("url", "/board/detail?boNum="+board.getBo_num());
+			model.addAttribute("msg", "게시글을 수정하지 못했습니다.");
+		}
+		return "message";
+	}
 }
