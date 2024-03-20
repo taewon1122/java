@@ -1,6 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 	position: fixed; top:0; bottom:0; left:0; right:0;
 	background: rgba(0,0,0,0.3);
 	display: none;
-	text-align: center; coler : white;
+	text-align: center; color : white;
 	line-height: 100vh
 }
 </style>
@@ -23,10 +23,8 @@
 <button class="btn btn-outline-success col-12 btn-find">비번찾기</button>
 <div class="container-spinner">
 	찾기 중
-	<span class="spinner-border text-warning"></span>
+	<span class="spinner-border text-danger"></span>
 </div>
-
-<!--  -->
 <script type="text/javascript">
 $('.btn-find').click(function(){
 	//아이디를 가져옴(데이터 생성)
@@ -39,7 +37,7 @@ $('.btn-find').click(function(){
 		async : true,
 		url : '<c:url value="/find/pw"/>', 
 		type : 'post', 
-		data : obj, 
+		data : obj,
 		dataType : "json", 
 		success : function (data){
 			if(data.result){
@@ -54,6 +52,7 @@ $('.btn-find').click(function(){
 		}
 	});
 })
+
 </script>
 </body>
 </html>
