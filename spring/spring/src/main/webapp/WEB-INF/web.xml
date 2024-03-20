@@ -3,10 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- 모든 서블릿과 필터에 공유하는 설정을 지정하는 파일 -->
+	<!-- 모든 서블릿과 필터에 공유하는 설정을 지정하는 파일  -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -29,6 +32,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
 	<filter>
 	    <filter-name>encoding</filter-name>
 	    <filter-class>
@@ -44,5 +48,4 @@
 	    <filter-name>encoding</filter-name>
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
-
 </web-app>
