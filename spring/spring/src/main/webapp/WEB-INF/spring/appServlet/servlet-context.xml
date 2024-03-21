@@ -33,6 +33,10 @@
 	<!-- GuestInterceptor를 등록 -->
 	<beans:bean id="guestInterceptor"
 	class="kr.kh.spring.interceptor.GuestInterceptor"/>
+	<!-- GuestInterceptor를 등록 -->
+	<beans:bean id="autoLoginInterceptor"
+	class="kr.kh.spring.interceptor.AutoLoginInterceptor"/>
+	
 	
 	<!-- LoginInterceptor가 실행된 URL 지정 -->
 	<interceptors>
@@ -54,6 +58,11 @@
 			<mapping path="/signup"/>
 			<mapping path="/find/pw"/>
 			<beans:ref bean="guestInterceptor"/>
+		</interceptor>
+	<!-- GuestInterceptor가 실행된 URL 지정 -->
+		<interceptor>
+			<mapping path="/*"/>
+			<beans:ref bean="autoLoginInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
