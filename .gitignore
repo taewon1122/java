@@ -86,4 +86,4 @@ target/
 test/resources/
 log4j.xml
 
-node.modules/
+node_modules/
