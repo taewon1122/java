@@ -76,7 +76,7 @@
 			id : "abc",
 			pw : "def"
 		}
-		$(this);//1번 
+		$(this);//1번 => event가 발생한 요소
 		//작업1
 		let name = clickTest1(obj);
 		console.log(name);
