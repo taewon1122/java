@@ -26,43 +26,59 @@
 		- 서버에서 화면에 데이터를 전송
 		- 화면에서는 서버에서 보낸 데이터를 alert으로 출력
 	 -->
-	<input type="text" name="name" placeholder="이름을 입력하세요.">
-	<br>
-	<input type="text" name="age" placeholder="나이를 입력하세요.">
-	<br>
-	<button type="button" class="btn3">전송</button>
+	<form action="">
+		<input type="text" name="name" placeholder="이름을 입력하세요.">
+		<br>
+		<input type="text" name="age" placeholder="나이를 입력하세요.">
+		<br>
+		<button type="submit" class="btn3">전송</button>
+	</form>
 	
 	<script type="text/javascript">
-		$(".btn1").click(function(){
-			let name = "";
-			//작업1
-			$.ajax({
-				//동기는 작업1이 다 끝날때까지 기다린 후 작업2가 실행
-				//비동기는 작업1이 실행된 후, 끝날때까지 기다리지 않고 작업2가 실행
-				async : true, //생략하면 true(비동기)
-				url : '<c:url value="/ajax/json/json"/>', 
-				type : 'post',
-				data : JSON.stringify(obj), //객체를 json형태의 문자열로 변환 <-> JSON.parse
-				//서버로 보내는 데이터의 타입. 위에 있는 data의 타입
-				contentType : "application/json; charset=utf-8",
-				//서버에서 화면으로 보내는 데이터의 타입. 아래에 있는 success의 data의 타입
-				dataType : "json", 
-				success : function (data){
-					//서버에서 보낸 name과 회원 id, pw을 콘솔창에 출력하는 코드
-					console.log(data.member.id);
-					console.log(data.member.pw);
-					console.log(data.name);
-					$(this) //2번
-					//1번 this와 2번 this는 같다?(x)
-					//clickTest1의 return을 불러오지만					
-					return data.name;
-				}, 
-				error : function(jqXHR, textStatus, errorThrown){
+	//서버에서 보낸 이름을 가져오는 함수
+	function clickTest1(obj){
+		let name = "";
+		$.ajax({
+			//동기는 작업1이 다 끝날때까지 기다린 후 작업2가 실행
+			//비동기는 작업1이 실행된 후, 끝날때까지 기다리지 않고 작업2가 실행
+			async : false,//생략하면 true
+			url : '<c:url value="/ajax/json/json"/>', 
+			type : 'post', 
+			data : JSON.stringify(obj), //객체를 json형태의 문자열로 변환
+			//서버로 보내는 데이터의 타입. 위에 있는 data의 타입
+			contentType : "application/json; charset=utf-8",
+			//서버에서 화면으로 보내는 데이터의 타입. 아래에 있는 success의 data 타입
+			dataType : "json", 
+			success : function (data){
+				//서버에서 보낸 name과 회원 id, pw을 콘솔창에 출력하는 코드
+				console.log(data.member.id);
+				console.log(data.member.pw);
+				console.log(data.name);
+				$(this); //2번 
+				//1번 this와 2번 this는 같다?(X)
+				//
+				//clickTest1의 return을 원하지만 success에 구현한 함수에 
+				//return을 지정하면 success함수의 결과를 리턴 
+				//return data.name;
+				name = data.name;
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
 
-				}
-			});
-			//작업2
-		});	
+			}
+		});
+		return name;
+	}
+	$(".btn1").click(function(){
+		let obj = {
+			id : "abc",
+			pw : "def"
+		}
+		$(this);//1번 
+		//작업1
+		let name = clickTest1(obj);
+		console.log(name);
+		//작업2
+	});
 	</script>
 	
 	<script type="text/javascript">
@@ -90,14 +106,9 @@
 	</script>
 
 	<script type="text/javascript">
-		$(".btn3").click(function(){
-			let name = $("[name=name]").val();
-			let age = $("[name=age]").val();
-			let obj ={
-					name, //name : name,
-					age	//age : age
-			}
-			//vo가 따로 없기때문에 object -> json이 편리하다
+		$("form").submit(function(){
+			//form에 있는 입력 태그들을 하나의 문자열로 만들어줌. name명=값& 형태로
+			let obj = $(this).serialize();
 			$.ajax({
 				async : true,
 				url : '<c:url value="/ajax/object/json2"/>', 
@@ -111,6 +122,7 @@
 
 				}
 			});
+			return false;
 		})
 		
 	</script>
