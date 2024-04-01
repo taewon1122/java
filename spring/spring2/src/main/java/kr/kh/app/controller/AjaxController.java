@@ -1,5 +1,6 @@
 package kr.kh.app.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,12 +37,22 @@ public class AjaxController {
 	}
 	
 	@GetMapping("/object/json2")
-	public Map<String, Object> idpw(
+	public Map<String, Object> objectJson2(
 			@RequestParam("name")String name, @RequestParam("age")int age){
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		System.out.println(name);
 		System.out.println(age);
 		map.put("result", "성공");
 		return map;
+	}
+	
+	@GetMapping("/object/object")
+	public ArrayList<String> objectObject(@RequestParam("name")String name){
+		System.out.println(name);
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(name);
+		list.add("안녕하세요");
+		list.add("테스트");
+		return list;
 	}
 }

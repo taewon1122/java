@@ -33,7 +33,10 @@
 		<br>
 		<button type="submit" class="btn3">전송</button>
 	</form>
+	<br>
+	<button type="button" class="btn4">object - object</button>
 	
+	<!-- json -> json -->
 	<script type="text/javascript">
 	//서버에서 보낸 이름을 가져오는 함수
 	function clickTest1(obj){
@@ -81,6 +84,7 @@
 	});
 	</script>
 	
+	<!-- object -> json -->
 	<script type="text/javascript">
 		$(".btn2").click(function(){
 			let obj = {
@@ -104,7 +108,8 @@
 		});
 	
 	</script>
-
+	
+	<!-- object -> json -->
 	<script type="text/javascript">
 		$("form").submit(function(){
 			//form에 있는 입력 태그들을 하나의 문자열로 만들어줌. name명=값& 형태로
@@ -122,9 +127,27 @@
 
 				}
 			});
-			return false;
 		})
-		
+	</script>
+	
+	<!-- object -> object -->
+	<script type="text/javascript">
+		$(".btn4").click(function(){
+			let obj = {name : "홍길동"}
+			
+			$.ajax({
+				async : true,
+				url : '<c:url value="/ajax/object/object"/>', 
+				type : 'get', 
+				data : obj, 
+				success : function (data){
+					console.log(data);
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		})
 	</script>
 </body>
 </html>
