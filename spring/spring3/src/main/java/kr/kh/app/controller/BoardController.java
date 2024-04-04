@@ -21,7 +21,7 @@ public class BoardController {
 	@GetMapping("/post/list")
 	public String postList(Model model, Criteria cri) {
 		ArrayList<BoardVO> boardList = boardService.getBoardList(cri);
-		int totalCount = boardService.getBoardTotalCount();
+		int totalCount = boardService.getBoardTotalCount(cri);
 		PageMaker pm = new PageMaker(2, cri, totalCount);
 		model.addAttribute("pm", pm);
 		model.addAttribute("title", "게시글 목록");

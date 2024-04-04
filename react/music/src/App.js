@@ -1,27 +1,18 @@
+import './App.css';
 import { useState } from 'react';
 import {BrowserRouter, Route, Link, Routes, useLocation, useNavigate} from 'react-router-dom'
-
 function App() {
 
-  //음악을 조회하고 등록하는 사이트를 구현하세요.
-  //음악 조회는 / 에서
-  //음악 등록은 /insert에서
-  //음악 등록시 음악번호(숫자), 제목, 가수, 장르를 입력하여 등록
-  //음악 번호는 중복되지 않게 입력해서 추가
-  //음악 조회에서 음악 삭제버튼을 클릭하면 삭제되도록 구현
-  //   : 음악번호를 이용하여 삭제
   let[list, setList] = useState([]);
   
-  function add(music){
-    setList([music, ...list]);
+  function add(movie){
+    setList([movie, ...list]);
   }
   function remove(num){
-    let tmpList = list.filter(item=>item.num != num);
+    let tmpList = list.filter(item=>item.num !== num);
     setList(tmpList)
   }
   return (
-    //BrowserRouter : 하나의 app으로 여러 페이지들을 처리할때 사용
-    //route : 어떤 url일때 어떤 컴포넌트를 연결할것인지
     <BrowserRouter>
     <Nav/>
     <Routes>
@@ -34,22 +25,22 @@ function App() {
 function List({list, add, remove}){
   
   const location = useLocation();
-  let music = location.state;
-  if(music != null){
-    add(music);
+  let movie = location.state;
+  if(movie != null){
+    add(movie);
     location.state = null;
   }
   return(
     <div>
-      <h1>음악 리스트</h1>
-      <table>
-        <thead>
+      <h1 className="movie_list">Movies</h1>
+      <table className='movie_table'>
+        <thead className='table_head'>
           <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>가수</th>
-            <th>장르</th>
-            <th>기능</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +52,7 @@ function List({list, add, remove}){
                   <td>{item.title}</td>
                   <td>{item.artist}</td>
                   <td>{item.genre}</td>
-                  <td><button onClick={()=>remove(item.num)}>삭제</button></td>
+                  <td><button onClick={()=>remove(item.num)}>Delete</button></td>
                 </tr>
               )
             })
@@ -75,8 +66,8 @@ function List({list, add, remove}){
 function Nav(){
   return(
     <ul className="menu-list">
-      <li><Link to="/">음악 조회</Link></li>
-      <li><Link to="/add">음악 추가</Link></li>
+      <li><Link to="/">List</Link></li>
+      <li><Link to="/add">Add New Movie</Link></li>
     </ul>
   )
 }
@@ -94,7 +85,7 @@ function Add(){
   
   const navigate = useNavigate();
 
-  function addMusic(){
+  function addMovie(){
     navigate("/",{
       state : {
         num,
@@ -106,25 +97,22 @@ function Add(){
   }
 
   return(
-    <div>
-      <h1>음악 추가</h1>
+    <div className="movie_list">
+      <h1>Create Moive</h1>
       <div>
-        <label>음악 번호</label>
-        <input type="number" onChange={numChange}/>
+        <input type="text" onChange={numChange} placeholder='Input moive id'/>
       </div>
       <div>
-        <label>가수</label>
-        <input type="test" onChange={artistChange}/>
+        <input type="text" onChange={artistChange} placeholder='Input moive title'/>
       </div>
       <div>
-        <label>제목</label>
-        <input type="test" onChange={titleChange}/>
+        <input type="text" onChange={titleChange} placeholder='Input moive genre'/>
       </div>
       <div>
-        <label>장르</label>
-        <input type="test" onChange={genreChange}/>
+        <span>출시일</span>
+        <input type="date" onChange={genreChange}/>
       </div>
-      <button onClick={addMusic}>음악 추가</button>
+      <button onClick={addMovie}>Add Movie</button>
     </div>
   );
 }
