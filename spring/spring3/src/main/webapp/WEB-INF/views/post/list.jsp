@@ -46,6 +46,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<a class="btn btn-outline-success" href='<c:url value="/post/insert"/>'>글쓰기</a>
 	<ul class="pagination justify-content-center">
 		<li class="page-item">
 			<c:if test="${pm.prev}">
