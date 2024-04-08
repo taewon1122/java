@@ -2,7 +2,6 @@ package kr.kh.app.controller;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +54,18 @@ public class BoardController {
 			model.addAttribute("url", "/post/insert");
 		}
 		return "message";
+	}
+	
+	@GetMapping("/post/detail")
+	public String postDetail(Model model, int num) {
+		log.info(num);
+		//게시글 조회수 증가
+		boardService.updateView(num);
+		//게시글을 가져옴
+		BoardVO board = boardService.getBoard(num);
+		model.addAttribute("title", "게시글 상세");
+		model.addAttribute("board", board);
+		return "/post/detail";
 	}
 	
 }

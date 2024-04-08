@@ -14,4 +14,8 @@ public interface BoardService {
 
 	boolean insertBoard(MemberVO user, BoardVO board);
 
+	BoardVO getBoard(int num);
+
+	void updateView(int num);
+
 }

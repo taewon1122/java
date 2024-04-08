@@ -16,4 +16,8 @@ public interface BoardDAO {
 
 	boolean insertBoard(@Param("board") BoardVO board);
 
+	BoardVO selectBoard(@Param("num") int num);
+
+	void updateView(@Param("num")int num);
+
 }

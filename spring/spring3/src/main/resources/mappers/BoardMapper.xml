@@ -43,4 +43,10 @@
 		insert into board(bo_title, bo_content, bo_me_id, bo_co_num)
 		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},1)
 	</insert>
+	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board where bo_num = ${num}
+	</select>
+	<update id="updateView">
+		update board set bo_view = bo_view + 1 where bo_num = #{num};
+	</update>
 </mapper>

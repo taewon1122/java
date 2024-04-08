@@ -48,5 +48,15 @@ public class BoardServiceImp implements BoardService{
 		board.setBo_me_id(user.getMe_id());
 		return boardDao.insertBoard(board);
 	}
+
+	@Override
+	public BoardVO getBoard(int num) {
+		return boardDao.selectBoard(num);
+	}
+
+	@Override
+	public void updateView(int num) {
+		boardDao.updateView(num);
+	}
 	
 }
